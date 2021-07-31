@@ -85,7 +85,7 @@
                         $deleteResult = mysqli_query($conn, "DELETE FROM kelas WHERE IdKelas='$value'");
                     }
                 }
-                header("Refresh: 1");
+                echo "<script>window.location='KelasSenarai.php'</script>";
             }
             
         ?>

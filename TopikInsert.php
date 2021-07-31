@@ -64,13 +64,11 @@
                     //if data are inserted successfully...
                     if(mysqli_query($conn, $sql)){
                         echo"New record is inserted sucessfully";
-                        echo "
-                        <script>
-                            if(confirm('Berjaya tambah topik baharu')){
-                                window.location.href='TopikInsert.php';
-                            }
-                        </script>";
-                    }
+                        echo "<script>alert('Berjaya tambah topik baharu');</script>";
+                    }else {
+						echo "<script>alert('Tidak berjaya tambah topik baharu');</script>";
+					}
+					echo "<script>window.location='TopikInsert.php';</script>";
                 }
 				
 			}

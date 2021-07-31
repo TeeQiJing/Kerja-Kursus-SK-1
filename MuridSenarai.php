@@ -90,7 +90,7 @@
                         $deleteResult = mysqli_query($conn, "DELETE FROM murid WHERE IdMurid='$value'");
                     }
                 }
-                header("Refresh: 1");
+                echo "<script>window.location='MuridSenarai.php'</script>";
             }
             
         ?>

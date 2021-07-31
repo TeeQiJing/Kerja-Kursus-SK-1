@@ -160,8 +160,15 @@
 							$sql2 = "INSERT INTO soalan(IdSoalan, NamaSoalan, PilihanA, PilihanB, PilihanC, PilihanD, Jawapan, IdGuru, IdTopik) 
 							VALUES('$IdSoalan', '$NamaSoalan', '$PilihanA', '$PilihanB', '$PilihanC', '$PilihanD', '$Jawapan', '$IdGuru', '$IdTopik')";
 							$result2 = mysqli_query($conn, $sql2);
+
+							if($result2){
+								echo"New record is inserted sucessfully";
+								echo "<script>alert('Berjaya tambah soalan baharu');</script>";
+							}else {
+								echo "<script>alert('Tidak berjaya tambah soalan baharu');</script>";
+							}
+							echo "<script>window.location='Pilih.php';</script>";
 							
-							echo"<script>alert('Berjaya Tambah Soalan')</script>";
 						}
 					}else{
 

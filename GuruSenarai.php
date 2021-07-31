@@ -89,7 +89,7 @@
                         $deleteResult = mysqli_query($conn, "DELETE FROM guru WHERE IdGuru='$value'");
                     }
                 }
-                header("Refresh: 1");
+                echo "<script>window.location='GuruSenarai.php'</script>";
             }
             
         ?>

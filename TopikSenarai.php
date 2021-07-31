@@ -86,7 +86,7 @@
                         $deleteResult = mysqli_query($conn, "DELETE FROM topik WHERE IdTopik='$value'");
                     }
                 }
-                header("Refresh: 1");
+                echo "<script>window.location='TopikSenarai.php'</script>";
             }
             
         ?>

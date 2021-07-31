@@ -99,7 +99,7 @@
                         $deleteResult = mysqli_query($conn, "DELETE FROM soalan WHERE IdSoalan='$value'");
                     }
                 }
-                header("Refresh: 1");
+                echo "<script>window.location='SoalanSenarai.php'</script>";
             }
             
         ?>

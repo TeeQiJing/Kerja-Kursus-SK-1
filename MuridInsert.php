@@ -88,13 +88,11 @@
                     //if data are inserted successfully...
                     if(mysqli_query($conn, $sql)){
                         echo"New record is inserted sucessfully";
-                        echo "
-                        <script>
-                            if(confirm('Berjaya tambah murid baharu')){
-                                window.location.href='MuridInsert.php';
-                            }
-                        </script>";
-                    }
+                        echo "<script>alert('Berjaya tambah murid baharu');</script>";
+                    }else {
+						echo "<script>alert('Tidak berjaya tambah murid baharu');</script>";
+					}
+					echo "<script>window.location='MuridInsert.php';</script>";
                 }
 				
 			}

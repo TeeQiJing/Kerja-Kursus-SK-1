@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 13, 2021 at 10:27 AM
+-- Generation Time: Aug 22, 2021 at 07:37 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 7.3.28
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `kerja kursus sk`
+-- Database: `kerja_kursus_sk`
 --
 
 -- --------------------------------------------------------
@@ -41,9 +41,9 @@ INSERT INTO `guru` (`IdGuru`, `NamaGuru`, `KatalaluanGuru`) VALUES
 ('G001', 'Ali bin Abu', 'ali123'),
 ('G002', 'Muthu', 'muthu4433'),
 ('G003', 'Pang Pei Ling', 'ppl1234'),
-('G004', 'LaoChiBai', 'lvb339'),
-('G005', 'Abah abah', 'abah1227'),
-('G006', 'John', 'john1234'),
+('G004', 'Lau Lim Siew', 'lls339'),
+('G005', 'Ahmad', 'ahmad1227'),
+('G006', 'John', 'john5566'),
 ('G007', 'Peter', 'peter677');
 
 -- --------------------------------------------------------
@@ -62,6 +62,8 @@ CREATE TABLE `kelas` (
 --
 
 INSERT INTO `kelas` (`IdKelas`, `Kelas`) VALUES
+('K301', '3 Wawasan'),
+('K302', '3 Bestari'),
 ('K401', '4 Wawasan'),
 ('K402', '4 Bestari'),
 ('K501', '5 Wawasan'),
@@ -100,11 +102,18 @@ INSERT INTO `keputusan` (`IdKeputusan`, `IdMurid`, `IdSoalan`, `JawapanMurid`, `
 (17, 'M001', 'S010', 'B', 'betul', '2021-07-09'),
 (18, 'M001', 'S023', 'A', 'salah', '2021-07-09'),
 (19, 'M001', 'S007', 'B', 'salah', '2021-07-09'),
-(20, 'M001', 'S020', 'A', 'salah', '2021-07-09'),
 (21, 'M001', 'S002', 'B', 'betul', '2021-07-09'),
 (22, 'M001', 'S014', 'B', 'betul', '2021-07-09'),
 (23, 'M001', 'S006', 'B', 'betul', '2021-07-09'),
-(24, 'M001', 'S018', 'B', 'betul', '2021-07-09');
+(24, 'M001', 'S018', 'B', 'betul', '2021-07-09'),
+(27, 'M001', 'S002', 'B', 'betul', '2021-07-23'),
+(28, 'M001', 'S014', 'B', 'betul', '2021-07-23'),
+(29, 'M002', 'S002', 'A', 'salah', '2021-08-15'),
+(30, 'M002', 'S014', 'B', 'betul', '2021-08-15'),
+(31, 'M002', 'S012', 'B', 'salah', '2021-08-15'),
+(32, 'M002', 'S025', 'A', 'betul', '2021-08-15'),
+(33, 'M001', 'S001', 'A', 'betul', '2021-08-22'),
+(34, 'M001', 'S019', 'C', 'betul', '2021-08-22');
 
 -- --------------------------------------------------------
 
@@ -115,7 +124,7 @@ INSERT INTO `keputusan` (`IdKeputusan`, `IdMurid`, `IdSoalan`, `JawapanMurid`, `
 CREATE TABLE `murid` (
   `IdMurid` varchar(10) NOT NULL,
   `NamaMurid` varchar(100) NOT NULL,
-  `KatalaluanMurid` varchar(20) NOT NULL,
+  `KatalaluanMurid` varchar(8) NOT NULL,
   `IdKelas` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -124,11 +133,12 @@ CREATE TABLE `murid` (
 --
 
 INSERT INTO `murid` (`IdMurid`, `NamaMurid`, `KatalaluanMurid`, `IdKelas`) VALUES
-('M001', 'Tee Qi Jing', '1234', 'K501'),
+('M001', 'Tee Qi Jing', 'jing1234', 'K501'),
 ('M002', 'Tee Qi Bin', 'bin123', 'K401'),
-('M003', 'Abah abah', 'abah??', 'K402'),
-('M004', 'sssssssss', 'ssssssssss', 'K402'),
-('M005', 'John', 'john5487', 'K401');
+('M003', 'Ali', 'ali889', 'K402'),
+('M004', 'Muthu', 'muthu677', 'K402'),
+('M005', 'John', 'john5487', 'K401'),
+('M006', 'Bobby', 'bobby123', 'K402');
 
 -- --------------------------------------------------------
 
@@ -210,9 +220,7 @@ INSERT INTO `topik` (`IdTopik`, `NamaTopik`) VALUES
 ('2.3', 'Pembangunan Pangkalan Data Hubungan'),
 ('2.4', 'Pembangunan Sistem Pangkalan Data'),
 ('3.1', 'Reka Bentuk Interaksi'),
-('3.2', 'Paparan dan Reka Bentuk Skrin'),
-('3.3', 'ttttttttt\r\n'),
-('3.4', 'hdddddddd');
+('3.2', 'Paparan dan Reka Bentuk Skrin');
 
 --
 -- Indexes for dumped tables
@@ -250,8 +258,8 @@ ALTER TABLE `murid`
 --
 ALTER TABLE `soalan`
   ADD PRIMARY KEY (`IdSoalan`),
-  ADD KEY `IdGuru` (`IdGuru`),
-  ADD KEY `IdTopik` (`IdTopik`);
+  ADD KEY `soalan_ibfk_1` (`IdGuru`),
+  ADD KEY `soalan_ibfk_2` (`IdTopik`);
 
 --
 -- Indexes for table `topik`
@@ -267,7 +275,7 @@ ALTER TABLE `topik`
 -- AUTO_INCREMENT for table `keputusan`
 --
 ALTER TABLE `keputusan`
-  MODIFY `IdKeputusan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `IdKeputusan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- Constraints for dumped tables
@@ -284,14 +292,14 @@ ALTER TABLE `keputusan`
 -- Constraints for table `murid`
 --
 ALTER TABLE `murid`
-  ADD CONSTRAINT `murid_ibfk_1` FOREIGN KEY (`IdKelas`) REFERENCES `kelas` (`IdKelas`);
+  ADD CONSTRAINT `murid_ibfk_1` FOREIGN KEY (`IdKelas`) REFERENCES `kelas` (`IdKelas`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `soalan`
 --
 ALTER TABLE `soalan`
-  ADD CONSTRAINT `soalan_ibfk_1` FOREIGN KEY (`IdGuru`) REFERENCES `guru` (`IdGuru`),
-  ADD CONSTRAINT `soalan_ibfk_2` FOREIGN KEY (`IdTopik`) REFERENCES `topik` (`IdTopik`);
+  ADD CONSTRAINT `soalan_ibfk_1` FOREIGN KEY (`IdGuru`) REFERENCES `guru` (`IdGuru`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `soalan_ibfk_2` FOREIGN KEY (`IdTopik`) REFERENCES `topik` (`IdTopik`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -9,7 +9,12 @@
 	<head>
 		<title>Kemaskini Murid</title>
 		<link href="header.css" rel="stylesheet">
-		<link href="MuridUpdate.css" rel="stylesheet">
+		<link href="borang.css" rel="stylesheet">
+		<style>
+			input[type="submit"]{
+				margin-bottom: 30px;
+			}	
+		</style>
 	</head>
 	<body>
 		<?php

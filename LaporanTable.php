@@ -2,15 +2,27 @@
 	// Start session
 	session_start();
     error_reporting(E_ALL & ~E_NOTICE);
-    include("notUser.php");
+
 ?>
 
 <!DOCTYPE html>
 <html>
 	<head>
 		<title>Laporan Jadual</title>
-		<link href="LaporanTable.css" rel="stylesheet">
+		<link href="Laporan.css" rel="stylesheet">
 		<link href="header.css" rel="stylesheet">
+        <style>
+            table {
+                margin-left: 55%;
+                transform: translate(-50%);
+                width: 80%;
+                margin-top: 130px;
+                margin-bottom: 0px;
+                border-radius: 10px;
+                overflow: hidden;
+                box-shadow: 15px 15px 6px rgba(106, 96, 96, 0.7);
+            }
+        </style>
 	</head>
 	<body>
 		<?php

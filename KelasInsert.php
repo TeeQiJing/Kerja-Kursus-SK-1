@@ -9,7 +9,22 @@
 	<head>
 		<title>Tambah Kelas Baharu</title>
 		<link href="header.css" rel="stylesheet">
-		<link href="KelasInsert.css" rel="stylesheet">
+		<link href="borang.css" rel="stylesheet">
+		<style>
+			input[type="submit"]{
+				width: 100%;
+				height: 50px;
+				border: 1px solid;
+				background: #2691d9;
+				border-radius: 25px;
+				font-size: 19px;
+				color: #e9f4fb;
+				font-weight: 700;
+				cursor: pointer;
+				outline: none;
+				margin-bottom: 30px;
+			}	
+		</style>
 	</head>
 	<body>
 		<?php

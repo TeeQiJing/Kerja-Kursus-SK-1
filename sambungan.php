@@ -8,7 +8,7 @@
     #password bagi SQL. masukkan password anda.
     $dbpassword = "";
     #nama pangkalan data yang anda telah bangunkan sebelum ini.
-    $dbname = "kerja kursus sk";
+    $dbname = "kerja_kursus_sk";
     #membuka hubungan antara pangkalan data dan sistem.
     $conn = mysqli_connect($host, $dbusername, $dbpassword, $dbname);
 

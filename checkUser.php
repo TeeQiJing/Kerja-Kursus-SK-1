@@ -6,12 +6,12 @@
 		echo"</p>";
 	}elseif(!empty($_SESSION['NamaMurid'])){
 		echo"<p id='msg'>";
-		echo"<img src='Student-icon.png' id='icon'>";
+		echo"<img src='img/Student-icon.png' id='icon'>";
 		echo("Nama Murid : <br>".$_SESSION['NamaMurid']);
 		echo"</p>";
 	}elseif(!empty($_SESSION['NamaGuru'])){
 		echo"<p id='msg'>";
-		echo"<img src='Teacher-icon.png' id='icon'>";
+		echo"<img src='img/Teacher-icon.png' id='icon'>";
 		echo("Nama Guru : <br>".$_SESSION['NamaGuru']);
 		echo"</p>";
 	}
@@ -38,7 +38,6 @@
 			position: absolute;
 			width: 180px;
 			z-index: 2;
-			right: 5px;
 			top: 0px;
 			font-size: 18px;
 			text-decoration: none;
@@ -49,6 +48,7 @@
 			height: 90px;
 			background-color: #f831ff;
 			margin: 0;
+			right: 0px;
 		}
 		#icon {
 			position: absolute;

@@ -1,10 +1,6 @@
 <?php
 	// Start session
 	session_start();
-	
-
-	//Check
-	include("notUser.php");
 
 	// Report all errors except E_NOTICE
 	error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING);
@@ -44,7 +40,7 @@
 						<select name='IdTopikSelect' id='IdTopik' required>";
 							$result = mysqli_query($conn, "SELECT * FROM topik ORDER BY IdTopik ASC");
 							while($topik = mysqli_fetch_assoc($result)){
-								echo"<option value='$topik[IdTopik]'>$topik[IdTopik].$topik[NamaTopik]</option>";
+								echo"<option value='$topik[IdTopik]'>$topik[IdTopik]  -  $topik[NamaTopik]</option>";
 							}
 			echo"
 						</select>

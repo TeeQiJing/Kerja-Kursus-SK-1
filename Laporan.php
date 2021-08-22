@@ -2,9 +2,6 @@
 	// Start session
 	session_start();
 
-	// Check  
-	include("notUser.php");
-
 	// Report all errors except E_NOTICE
 	error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING);
 ?>

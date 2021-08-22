@@ -35,7 +35,7 @@
 
 				<div id="slide3" class="mySlides fade">
 					<!-- <img src="slide2.png" alt="" width="100%" height="100%"> -->
-					<h1><i>Apa lanjiao?</i></h1>
+					<h1><i>Kuiz SK</i></h1>
 					Aplikasi ini disediakan bagi pelajar terutamanya pelajar tingkatan 4 untuk menjawab soalan-soalan Sains Komputer Tingkatan 4.
 					<br><br><br><br><br><br>
 					Copyright 2021 &copy; by Master Jing

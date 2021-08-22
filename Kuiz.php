@@ -2,9 +2,6 @@
 	// Start session
 	session_start();
 	error_reporting(E_ALL & ~E_NOTICE);
-
-	//Check
-	include("notStudent.php");
 ?> 
 
 <!DOCTYPE html>

@@ -9,7 +9,12 @@
 	<head>
 		<title>Kemaskini Guru</title>
 		<link href="header.css" rel="stylesheet">
-		<link href="GuruUpdate.css" rel="stylesheet">
+		<link href="borang.css" rel="stylesheet">
+		<style>
+			input[type="submit"]{
+				margin-bottom: 30px;
+			}	
+		</style>
 	</head>
 	<body>
 		<?php
@@ -34,7 +39,7 @@
 							?>
 						</select>
 						<span></span>
-						<label id="SilaPilihKelas">Sila Pilih Guru</label>
+						<label id="SilaPilihKelas">Sila Pilih IdGuru</label>
 					</div>
                     <div class="txt_field">
 						<input type="text" name="NamaGuru" required>

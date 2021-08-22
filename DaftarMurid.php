@@ -9,7 +9,7 @@
 	<head>
 		<title>Daftar Murid</title>
 		<link href="header.css" rel="stylesheet">
-		<link href="DaftarMurid.css" rel="stylesheet">
+		<link href="borang.css" rel="stylesheet">
 	</head>
 	<body>
 		<?php
@@ -100,8 +100,11 @@
 							$_SESSION["Status"] = "Murid";
 
 							//transfer user to laman utama
-							
-							echo "<script>window.location.href='LamanUtama.php';</script>";
+							echo "
+							<script>
+								alert('Berjaya daftar!');
+								window.location.href='LamanUtama.php';
+							</script>";
 						}
 					}
 				}

@@ -10,7 +10,7 @@
 <html>
 	<head>
 		<title>Laporan Analisis</title>
-		<link href="LaporanAnalisis.css" rel="stylesheet">
+		<link href="Laporan.css" rel="stylesheet">
 		<link href="header.css" rel="stylesheet">
 	</head>
 	<body>

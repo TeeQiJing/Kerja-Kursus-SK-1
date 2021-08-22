@@ -1,3 +1,4 @@
+/* This is a css file for Laporan.php, LaporanTable.php and LaporanAnalisis.php */
 #content {
 	position: relative;
 	width: 100%;
@@ -141,4 +142,41 @@ select {
 }
 #guruSelect {
 	margin-left: 200px;
+}
+.jadualTitle {
+    background-color: rgb(167, 21, 111);
+}
+#quickSearch {
+    position: sticky;
+    background-color: rgb(240, 37, 37);
+    color: white;
+    border-radius: 10px;
+    border: 2px solid #ff0055;
+    top: 120px;
+    left: 5px;
+    float: left;
+    width: 13%;
+    margin: 0 10px 20px auto;
+    padding: 10px 0px;
+    text-align: center;
+    z-index: 20;
+    box-shadow: 15px 15px 6px rgba(106, 96, 96, 0.7);
+}
+#quickSearch h2 {
+    text-decoration: underline;
+}
+#jadualGuru, #jadualTopik, #jadualSoalan, #jadualKelas {
+    position: relative;
+    top: 0%;
+    
+} 
+#jadualMurid {
+    position: relative;
+    top: -50%;
+}
+#quickSearch li a {
+    color: whitesmoke;
+    text-decoration: none;
+    font-size: 1.1em;
+    text-align: center;
 }

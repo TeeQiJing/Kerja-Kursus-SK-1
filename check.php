@@ -36,11 +36,10 @@
 	}
 
     //Transfer user to Pilih.php after all results are inserted into table `keputusan`
-    echo"<script>
-        if(confirm('Keputusan anda telah direkod!')){
-            window.location='Pilih.php';
-
-        }
+    echo"
+    <script>
+        alert('Keputusan anda telah direkod!');
+        window.location='Pilih.php';
     </script>";
 	
 

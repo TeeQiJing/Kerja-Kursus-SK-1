@@ -9,9 +9,7 @@
 	<head>
 		<title>Log Masuk Guru</title>
 		<link href="header.css" rel="stylesheet">
-		<link href="LogMasukGuru.css" rel="stylesheet">
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">	
-		
+		<link href="borang.css" rel="stylesheet">	
 	</head>
 	<body>
 		<?php
@@ -69,7 +67,7 @@
 						$_SESSION["Status"] = "Guru";
 						
 						//transfer user to laman utama
-						header("location: http://localhost/Kerja%20Kursus%20SK%201/LamanUtama.php");
+						header("location: LamanUtama.php");
 
 					}else{
 

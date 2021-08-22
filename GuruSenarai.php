@@ -9,8 +9,44 @@
 <html>
 	<head>
 		<title>Senarai Guru</title>
-		<link href="GuruSenarai.css" rel="stylesheet">
+		<link href="Laporan.css" rel="stylesheet">
 		<link href="header.css" rel="stylesheet">
+        <style>
+            table {
+                margin-left: 50%;
+                transform: translateX(-50%);
+                width: 80%;
+                margin-top: 130px;
+                margin-bottom: 0px;
+                border-radius: 10px;
+                overflow: hidden;
+                box-shadow: 15px 15px 6px rgba(106, 96, 96, 0.7);
+            }
+            #delete{
+                border: 1px solid #070124;
+                background-color: #8301da;
+                color: white;
+                padding: 10px 20px;
+                border-radius: 10px;
+                font-size: 16px;
+                transition: .3s;
+                font-weight: bold;
+                margin: 10px 20px 10px 0;
+                float: right;
+            }
+            #delete:hover {
+                background-color: #8301da79;
+                border: 1px solid #a306c2;
+            }
+            input[type=checkbox]{
+                margin: 2px;
+                padding: 0;
+                width: 18px;
+                height: 18px;
+                border: none;
+                background-color: #f85cf0; 
+            }
+        </style>
 	</head>
 	<body>
 		<?php

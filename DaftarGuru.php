@@ -8,7 +8,7 @@
 <html>
 	<head>
 		<title>Daftar Guru</title>
-		<link href="DaftarGuru.css" rel="stylesheet">
+		<link href="borang.css" rel="stylesheet">
 		<link href="header.css" rel="stylesheet">
 	</head>
 	<body>
@@ -85,7 +85,11 @@
 							$_SESSION["Status"] = "Guru";
 
 							//transfer user to laman utama
-							echo "<script>window.location.href='LamanUtama.php';</script>";
+							echo "
+							<script>
+								alert('Berjaya daftar!');
+								window.location.href='LamanUtama.php';
+							</script>";
 						}
 					}
 				}

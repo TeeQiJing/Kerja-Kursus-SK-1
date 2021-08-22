@@ -9,7 +9,12 @@
 	<head>
 		<title>Kemaskini Kelas</title>
 		<link href="header.css" rel="stylesheet">
-		<link href="KelasUpdate.css" rel="stylesheet">
+		<link href="borang.css" rel="stylesheet">
+		<style>
+			input[type="submit"]{
+				margin-bottom: 30px;
+			}	
+		</style>
 	</head>
 	<body>
 		<?php
@@ -34,7 +39,7 @@
 							?>
 						</select>
 						<span></span>
-						<label id="SilaPilihKelas">Sila Pilih Kelas</label>
+						<label id="SilaPilihKelas">Sila Pilih IdKelas</label>
 					</div>
 
 					<div class="txt_field">

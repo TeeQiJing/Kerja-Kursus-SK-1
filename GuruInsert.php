@@ -8,8 +8,13 @@
 <html>
 	<head>
 		<title>Tambah Guru Baharu</title>
-		<link href="GuruInsert.css" rel="stylesheet">
+		<link href="borang.css" rel="stylesheet">
 		<link href="header.css" rel="stylesheet">
+		<style>
+			input[type="submit"]{
+				margin-bottom: 30px;
+			}	
+		</style>
 	</head>
 	<body>
 		<?php

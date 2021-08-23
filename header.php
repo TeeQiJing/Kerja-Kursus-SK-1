@@ -53,18 +53,6 @@
 						</li>
 					</ul>
 				</li>
-			</ul>
-		</div>';
-	}
-	else if($_SESSION["Status"] == "Guru"){
-		echo'
-		<div id="menu-sidenav" class="sidenav">
-			<a href="javascript: void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-			<img src="img/authorName.png" alt="author-name" id="authorName" width=200px height=70px>
-			<ul>
-				<li>
-					<a id="LamanUtama" href="LamanUtama.php">Laman Utama</a>
-				</li>
 
 				<li>
 					<a id="Laporan" href="Laporan.php">Laporan</a>

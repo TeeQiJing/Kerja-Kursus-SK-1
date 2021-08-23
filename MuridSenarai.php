@@ -2,7 +2,7 @@
 	// Start session
 	session_start();
     error_reporting(E_ALL & ~E_NOTICE);
-    include("notUser.php");
+
 ?>
 
 <!DOCTYPE html>

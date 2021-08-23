@@ -21,37 +21,37 @@
 		<?php
 			//include database connection
 			include("sambungan.php");
-			$IdMuridNow = $_SESSION['IdMurid'];
+			// $IdMuridNow = $_SESSION['IdMurid'];
 			$IdGuruNow = $_SESSION['IdGuru'];
-			$NamaMuridNow = $_SESSION['NamaMurid'];
+			// $NamaMuridNow = $_SESSION['NamaMurid'];
 			$NamaGuruNow = $_SESSION['NamaGuru'];
 
 			echo"
 			<div id='content'>";
 
-			//if IdMurid is not empty...(Means that the user is a student)
-			if(!empty($_SESSION['IdMurid'])){
-			echo"
-			<div id='StudentContent'>
-				<h1>SILA PILIH TOPIK</h1>
+			// //if IdMurid is not empty...(Means that the user is a student)
+			// if(!empty($_SESSION['IdMurid'])){
+			// echo"
+			// <div id='StudentContent'>
+			// 	<h1>SILA PILIH TOPIK</h1>
 
-				<form action='Kuiz.php' method='post' id='StudentForm'>
-					<div class='txt_field' id='IdTopikTextField'>
-						<select name='IdTopikSelect' id='IdTopik' required>";
-							$result = mysqli_query($conn, "SELECT * FROM topik ORDER BY IdTopik ASC");
-							while($topik = mysqli_fetch_assoc($result)){
-								echo"<option value='$topik[IdTopik]'>$topik[IdTopik]  -  $topik[NamaTopik]</option>";
-							}
-			echo"
-						</select>
-						<span></span>
-						<label>Sila Pilih Topik</label>
-					</div>
-					<input type='submit' value='MULA'>
-				</form>
-			</div>";
+			// 	<form action='Kuiz.php' method='post' id='StudentForm'>
+			// 		<div class='txt_field' id='IdTopikTextField'>
+			// 			<select name='IdTopikSelect' id='IdTopik' required>";
+			// 				$result = mysqli_query($conn, "SELECT * FROM topik ORDER BY IdTopik ASC");
+			// 				while($topik = mysqli_fetch_assoc($result)){
+			// 					echo"<option value='$topik[IdTopik]'>$topik[IdTopik]  -  $topik[NamaTopik]</option>";
+			// 				}
+			// echo"
+			// 			</select>
+			// 			<span></span>
+			// 			<label>Sila Pilih Topik</label>
+			// 		</div>
+			// 		<input type='submit' value='MULA'>
+			// 	</form>
+			// </div>";
 				
-			}else if(!empty($_SESSION['IdGuru'])){
+			if(!empty($_SESSION['IdGuru'])){
 				echo"
 				<div id='TeacherContent'>
 					<h1>Tambah Soalan Baharu</h1>
@@ -137,9 +137,19 @@
 					$IdGuru = $_SESSION['IdGuru'];	
 					$IdTopik = $_POST['IdTopik'];
 					
-					//if the data are not empty
-					if(!empty($IdSoalan) AND !empty($NamaSoalan) AND !empty($PilihanA) AND !empty($PilihanB) AND !empty($PilihanC) AND !empty($PilihanD) AND !empty($Jawapan) AND !empty($IdGuru) AND !empty($IdTopik)){
-						
+					if(strlen($IdSoalan) != 4 || $IdSoalan[0] != 'S'){
+						echo "
+						<script>
+							alert('Id Soalan mesti mula dari huruf S dan mesti 4 aksara dan mematuhi format Sxxx!!!');
+							window.location = 'Pilih.php';
+						</script>";
+					}else if(strlen($Jawapan) != 1 || $Jawapan != 'A' || $Jawapan != 'B' || $Jawapan != 'C' || $Jawapan != 'D'){
+						echo "
+						<script>
+							alert('Jawapan mesti huruf besar A, B, C atau D sahaja!!!');
+							window.location = 'Pilih.php';
+						</script>";
+					}else{	
 						//Check whether the IdSoalan is exist in database
 						$checksql = "SELECT * FROM soalan WHERE IdSoalan = '$IdSoalan'";
 						$checkResult = mysqli_query($conn, $checksql);
@@ -164,17 +174,10 @@
 								echo "<script>alert('Tidak berjaya tambah soalan baharu');</script>";
 							}
 							echo "<script>window.location='Pilih.php';</script>";
-							
 						}
-					}else{
-
-						//if the data are empty
-						echo"<script>alert('Sila masukkan Semua Maklumat!!!')</script>";
-
 					}
+					
 				}
-			
-
 				echo"</div>";
 			}
 			echo "</div>"

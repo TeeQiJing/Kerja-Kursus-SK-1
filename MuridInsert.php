@@ -88,28 +88,41 @@
 				$NamaMurid = $_POST['NamaMurid'];
 				$KatalaluanMurid = $_POST['KatalaluanMurid'];
 				$IdKelas = $_POST['IdKelas'];
-					
-                $checksql = "SELECT * FROM murid WHERE IdMurid='$IdMurid'";			
-                $result = mysqli_query($conn, $checksql);
 
-                //if can find IdMurid in database... (Means that this IdMurid is exist and can insert as new)
-                if(mysqli_num_rows($result)==1){
-                    echo("<script>alert('Id Murid sudah ada, sila tambah Id Murid lain!!!')</script>");
-                }else{
-                    //if IdMurid is not found(Database does not has that IdMurid, user can insert it as new)
-                    //Tambah(Insert data into database)
-                    $sql = "INSERT INTO murid(IdMurid, NamaMurid, KatalaluanMurid, IdKelas) VALUES('$IdMurid', '$NamaMurid', '$KatalaluanMurid', '$IdKelas')";
-                    
-                    //if data are inserted successfully...
-                    if(mysqli_query($conn, $sql)){
-                        echo"New record is inserted sucessfully";
-                        echo "<script>alert('Berjaya tambah murid baharu');</script>";
-                    }else {
-						echo "<script>alert('Tidak berjaya tambah murid baharu');</script>";
+				if(strlen($IdMurid) != 4 || $IdMurid[0] != 'M'){
+					echo "
+					<script>
+						alert('Id Murid mesti mula dari huruf M dan mesti 4 aksara dan mematuhi format Mxxx!!!');
+						window.location = 'MuridInsert.php';
+					</script>";
+				}else if(strlen($KatalaluanMurid) != 8){
+					echo "
+					<script>
+						alert('Katalaluan Murid mesti 8 aksara!!!');
+						window.location = 'MuridInsert.php';
+					</script>";
+				}else{
+					$checksql = "SELECT * FROM murid WHERE IdMurid='$IdMurid'";			
+					$result = mysqli_query($conn, $checksql);
+
+					//if can find IdMurid in database... (Means that this IdMurid is exist and can insert as new)
+					if(mysqli_num_rows($result)==1){
+						echo("<script>alert('Id Murid sudah ada, sila tambah Id Murid lain!!!')</script>");
+					}else{
+						//if IdMurid is not found(Database does not has that IdMurid, user can insert it as new)
+						//Tambah(Insert data into database)
+						$sql = "INSERT INTO murid(IdMurid, NamaMurid, KatalaluanMurid, IdKelas) VALUES('$IdMurid', '$NamaMurid', '$KatalaluanMurid', '$IdKelas')";
+						
+						//if data are inserted successfully...
+						if(mysqli_query($conn, $sql)){
+							echo"New record is inserted sucessfully";
+							echo "<script>alert('Berjaya tambah murid baharu');</script>";
+						}else {
+							echo "<script>alert('Tidak berjaya tambah murid baharu');</script>";
+						}
+						echo "<script>window.location='MuridInsert.php';</script>";
 					}
-					echo "<script>window.location='MuridInsert.php';</script>";
-                }
-				
+				}
 			}
 		?>
 		

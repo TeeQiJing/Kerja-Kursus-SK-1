@@ -86,18 +86,25 @@
 				$NamaMurid = $_POST['NamaMurid'];
                 $KatalaluanMurid = $_POST['KatalaluanMurid'];
 				$IdKelas = $_POST['IdKelas'];
-   
-                //Update new data 
-                $sql = "UPDATE murid SET NamaMurid='$NamaMurid', KatalaluanMurid='$KatalaluanMurid', IdKelas='$IdKelas' WHERE IdMurid='$IdMurid'";
-                
-                //if data are updated successfully...
-                if(mysqli_query($conn, $sql)){
-                    echo "<script>alert('Berjaya kemaskini murid');</script>";
-                }else {
-                    echo "<script>alert('Tidak berjaya kemaskini murid');</script>";
-                }
-                echo "<script>window.location='MuridUpdate.php';</script>";
-				
+
+				if(strlen($KatalaluanMurid) != 8){
+					echo "
+					<script>
+						alert('Katalaluan Murid mesti 8 aksara!!!');
+						window.location = 'MuridInsert.php';
+					</script>";
+				}else{
+					//Update new data 
+					$sql = "UPDATE murid SET NamaMurid='$NamaMurid', KatalaluanMurid='$KatalaluanMurid', IdKelas='$IdKelas' WHERE IdMurid='$IdMurid'";
+					
+					//if data are updated successfully...
+					if(mysqli_query($conn, $sql)){
+						echo "<script>alert('Berjaya kemaskini murid');</script>";
+					}else {
+						echo "<script>alert('Tidak berjaya kemaskini murid');</script>";
+					}
+					echo "<script>window.location='MuridUpdate.php';</script>";
+				}
 			}
 		?>
 		

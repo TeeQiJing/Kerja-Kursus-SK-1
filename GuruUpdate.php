@@ -69,18 +69,25 @@
 				$IdGuru = $_POST['IdGuru'];
 				$NamaGuru = $_POST['NamaGuru'];
                 $KatalaluanGuru = $_POST['KatalaluanGuru'];
-   
-                //Update new data 
-                $sql = "UPDATE guru SET NamaGuru='$NamaGuru', KatalaluanGuru='$KatalaluanGuru' WHERE IdGuru='$IdGuru'";
-                
-                //if data are updated successfully...
-                if(mysqli_query($conn, $sql)){
-                    echo "<script>alert('Berjaya kemaskini guru');</script>";
-                }else {
-                    echo "<script>alert('Tidak berjaya kemaskini guru');</script>";
-                }
-                echo "<script>window.location='GuruUpdate.php';</script>";
-				
+
+				if(strlen($KatalaluanGuru) != 8){
+					echo "
+					<script>
+						alert('Katalaluan Guru mesti 8 aksara!!!');
+						window.location = 'GuruUpdate.php';
+					</script>";
+				}else{
+					//Update new data 
+					$sql = "UPDATE guru SET NamaGuru='$NamaGuru', KatalaluanGuru='$KatalaluanGuru' WHERE IdGuru='$IdGuru'";
+					
+					//if data are updated successfully...
+					if(mysqli_query($conn, $sql)){
+						echo "<script>alert('Berjaya kemaskini guru');</script>";
+					}else {
+						echo "<script>alert('Tidak berjaya kemaskini guru');</script>";
+					}
+					echo "<script>window.location='GuruUpdate.php';</script>";
+				}
 			}
 		?>
 		

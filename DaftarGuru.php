@@ -60,8 +60,19 @@
 				$NamaGuru = $_POST['NamaGuru'];
 				$KatalaluanGuru = $_POST['KatalaluanGuru'];
 
-				//if the data are not empty...
-				if(!empty($IdGuru) AND !empty($NamaGuru) AND !empty($KatalaluanGuru)){
+				if(strlen($IdGuru) != 4 || $IdGuru[0] != 'G'){
+					echo "
+					<script>
+						alert('Id Guru mesti mula dari huruf G dan mesti 4 aksara dan mematuhi format Gxxx!!!');
+						window.location = 'DaftarGuru.php';
+					</script>";
+				}else if(strlen($KatalaluanGuru) != 8){
+					echo "
+					<script>
+						alert('Katalaluan Guru mesti 8 aksara!!!');
+						window.location = 'DaftarGuru.php';
+					</script>";
+				}else{
 					
 					$checksql = "SELECT * FROM guru WHERE IdGuru='$IdGuru'";	
 					$result = mysqli_query($conn, $checksql);
@@ -92,7 +103,7 @@
 							</script>";
 						}
 					}
-				}
+				}			
 			}
 		?>
 

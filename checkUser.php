@@ -1,20 +1,26 @@
 <!--Check whether user is a student or teacher and print the name-->
+<!-- Print the name or no user on the top right part of screen -->
 <?php 
+	// If $_SESSION['NamaMurid'] and $_SESSION['NamaGuru'] are empty (No account login)
     if(empty($_SESSION['NamaMurid']) && empty($_SESSION['NamaGuru'])){
 		echo"<p id='noAccount'>";
 		echo("Sila Log Masuk<br>atau Daftar");
 		echo"</p>";
-	}elseif(!empty($_SESSION['NamaMurid'])){
+	}else if(!empty($_SESSION['NamaMurid'])){
+		// If $_SESSION['NamaMurid'] is not empty(Student already login)
 		echo"<p id='msg'>";
 		echo"<img src='img/Student-icon.png' id='icon'>";
 		echo("Nama Murid : <br>".$_SESSION['NamaMurid']);
 		echo"</p>";
-	}elseif(!empty($_SESSION['NamaGuru'])){
+	}else if(!empty($_SESSION['NamaGuru'])){
+		// If $_SESSION['NamaGuru'] is not empty(Teacher already login)
 		echo"<p id='msg'>";
 		echo"<img src='img/Teacher-icon.png' id='icon'>";
 		echo("Nama Guru : <br>".$_SESSION['NamaGuru']);
 		echo"</p>";
 	}
+
+	// CSS Styling
 	echo "
 	<style>
 		#msg {

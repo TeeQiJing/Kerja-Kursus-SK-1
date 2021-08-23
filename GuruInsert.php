@@ -21,7 +21,6 @@
 			include("header.php");
 		?>
 
-
 		<div id="content">
 			<div class="center">
 				<h1>Tambah Guru Baharu</h1>
@@ -62,29 +61,43 @@
 				$IdGuru = $_POST['IdGuru'];
 				$NamaGuru = $_POST['NamaGuru'];
 				$KatalaluanGuru = $_POST['KatalaluanGuru'];
+
+				if(strlen($IdGuru) != 4 || $IdGuru[0] != 'G'){
+					echo "
+					<script>
+						alert('Id Guru mesti mula dari huruf G dan mesti 4 aksara dan mematuhi format Gxxx!!!');
+						window.location = 'GuruInsert.php';
+					</script>";
+				}else if(strlen($KatalaluanGuru) != 8){
+					echo "
+					<script>
+						alert('Katalaluan Guru mesti 8 aksara!!!');
+						window.location = 'GuruInsert.php';
+					</script>";
+				}else{
 		
-                $checksql = "SELECT * FROM guru WHERE IdGuru='$IdGuru'";	
-                $result = mysqli_query($conn, $checksql);
+					$checksql = "SELECT * FROM guru WHERE IdGuru='$IdGuru'";	
+					$result = mysqli_query($conn, $checksql);
 
-                //if can find IdGuru in database... (Means that this IdGuru is exist and cannot insert as new)
-                if(mysqli_num_rows($result)==1){
-                    echo("<script>alert('Id Guru sudah ada, sila tambah Id Guru lain!!!')</script>");
-                }else{
+					//if can find IdGuru in database... (Means that this IdGuru is exist and cannot insert as new)
+					if(mysqli_num_rows($result)==1){
+						echo("<script>alert('Id Guru sudah ada, sila tambah Id Guru lain!!!')</script>");
+					}else{
 
-                    //if IdGuru is not found(Database does not has that IdGuru, user can insert it as new)
-                    //Tambah(Insert data into database)
-                    $sql = "INSERT INTO guru(IdGuru, NamaGuru, KatalaluanGuru) VALUES('$IdGuru', '$NamaGuru', '$KatalaluanGuru')";
-                    
-                    //if data are inserted successfully...
-                    if(mysqli_query($conn, $sql)){
-                        echo"New record is inserted sucessfully";
-                        echo "<script>alert('Berjaya tambah guru baharu');</script>";
-                    }else {
-						echo "<script>alert('Tidak berjaya tambah guru baharu');</script>";
+						//if IdGuru is not found(Database does not has that IdGuru, user can insert it as new)
+						//Tambah(Insert data into database)
+						$sql = "INSERT INTO guru(IdGuru, NamaGuru, KatalaluanGuru) VALUES('$IdGuru', '$NamaGuru', '$KatalaluanGuru')";
+						
+						//if data are inserted successfully...
+						if(mysqli_query($conn, $sql)){
+							echo"New record is inserted sucessfully";
+							echo "<script>alert('Berjaya tambah guru baharu');</script>";
+						}else {
+							echo "<script>alert('Tidak berjaya tambah guru baharu');</script>";
+						}
+						echo "<script>window.location='GuruInsert.php';</script>";
 					}
-					echo "<script>window.location='GuruInsert.php';</script>";
-                }
-				
+				}
 			}
 		?>
 

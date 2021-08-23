@@ -82,8 +82,8 @@ input[type=checkbox]{
 	background-color: #f85cf0;
 	
 }
-#delete, #print, #analisis {
-	border: 1px solid #070124;
+#delete, #print, #analisis, #semak{
+	border: 1px solid #6d58d4;
 	background-color: #8301da;
 	color: white;
 	padding: 10px 20px;
@@ -103,6 +103,13 @@ input[type=checkbox]{
 #analisis {
 	margin: 10px 0 10px 20px;
 	float:initial;
+}
+#semak {
+	margin-top: 20px;
+	margin-left: 10px;
+}
+#semak:hover{
+	border: 2px solid #590094;
 }
 #laporanTable{
 	position: relative;

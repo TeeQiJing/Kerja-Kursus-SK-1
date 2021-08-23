@@ -76,15 +76,29 @@
 				$KatalaluanMurid = $_POST['KatalaluanMurid'];
 				$IdKelas = $_POST['IdKelas'];
 
-				//if the data are not empty...
-				if(!empty($IdMurid) AND !empty($NamaMurid) AND !empty($KatalaluanMurid) AND !empty($IdKelas)){
-					
+				if(strlen($IdMurid) != 4 || $IdMurid[0] != 'M'){
+					echo "
+					<script>
+						alert('Id Murid mesti mula dari huruf M dan mesti 4 aksara dan mematuhi format Mxxx!!!');
+						window.location = 'DaftarMurid.php';
+					</script>";
+				}else if(strlen($KatalaluanMurid) != 8){
+					echo "
+					<script>
+						alert('Katalaluan Murid mesti 8 aksara!!!');
+						window.location = 'DaftarMurid.php';
+					</script>";
+				}else{
 					$checksql = "SELECT * FROM murid WHERE IdMurid='$IdMurid'";			
 					$result = mysqli_query($conn, $checksql);
 
 					//if can find IdMurid in database... (Means that this IdMurid is exist and user need to login)
 					if(mysqli_num_rows($result)==1){
-						echo("<script>alert('Id Murid anda telah daftar, sila log masuk!!!')</script>");
+						echo "
+						<script>
+							alert('Id Murid anda telah daftar, sila log masuk!!!');
+							window.location = 'LogMasukMurid.php';
+						</script>";
 					}else{
 						//if IdMurid is not found(Database does not has that IdMurid, user can daftar)
 						//Daftar(Insert data into database)
@@ -106,7 +120,7 @@
 								window.location.href='LamanUtama.php';
 							</script>";
 						}
-					}
+					}	
 				}
 			}
 		?>

@@ -18,7 +18,7 @@
 		<div id="content">
 			<div class="center">
 				<h1>Log Masuk Murid</h1>
-				<form action="LogMasukMurid.php" method="POST">
+				<form action="LogMasukMurid.php" method="POST" autocomplete="off">
 					<div class="txt_field">
 						<input type="text" id="IdMurid" name="IdMurid" required>
 						<span></span>

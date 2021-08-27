@@ -25,7 +25,7 @@
 			<div class="center">
                 <h1>Kemaskini Guru</h1>
 				
-				<form action="GuruUpdate.php" method="POST">
+				<form action="GuruUpdate.php" method="POST" autocomplete="off">
                     <div class="txt_field">
 						<select name="IdGuru" id="IdGuru" required>
 							

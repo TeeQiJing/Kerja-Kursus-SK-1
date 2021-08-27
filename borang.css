@@ -131,4 +131,7 @@ option {
 	text-decoration: underline;
 
 }
+input::placeholder {
+	color: #adadadb6;
+}
 

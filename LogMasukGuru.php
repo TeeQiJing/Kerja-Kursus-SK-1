@@ -19,7 +19,7 @@
 		<div id="content">
 			<div class="center" id="center">
 				<h1>LOG MASUK GURU</h1>
-				<form action="LogMasukGuru.php" method="POST">
+				<form action="LogMasukGuru.php" method="POST" autocomplete="off">
 					<div class="txt_field">
 						<input type="text" id="IdGuru" name="IdGuru" required>
 						<span></span>

@@ -25,7 +25,7 @@
 			<div class="center">
                 <h1>Kemaskini Murid</h1>
 				
-				<form action="MuridUpdate.php" method="POST">
+				<form action="MuridUpdate.php" method="POST" autocomplete="off">
                     <div class="txt_field">
 						<select name="IdMurid" id="IdMurid" required>
 							

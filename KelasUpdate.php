@@ -25,7 +25,7 @@
 			<div class="center">
 				<h1>Kemaskini Kelas</h1>
 				
-				<form action="KelasUpdate.php" method="POST">
+				<form action="KelasUpdate.php" method="POST" autocomplete="off">
                     <div class="txt_field" id="IdKelasTextField">
 						<select name="IdKelas" id="IdKelas" required>
 							

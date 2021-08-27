@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 22, 2021 at 07:37 AM
+-- Generation Time: Aug 23, 2021 at 07:41 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 7.3.28
 
@@ -28,9 +28,9 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `guru` (
-  `IdGuru` varchar(10) NOT NULL,
+  `IdGuru` varchar(4) NOT NULL,
   `NamaGuru` varchar(255) NOT NULL,
-  `KatalaluanGuru` varchar(100) NOT NULL
+  `KatalaluanGuru` varchar(8) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -38,13 +38,11 @@ CREATE TABLE `guru` (
 --
 
 INSERT INTO `guru` (`IdGuru`, `NamaGuru`, `KatalaluanGuru`) VALUES
-('G001', 'Ali bin Abu', 'ali123'),
-('G002', 'Muthu', 'muthu4433'),
-('G003', 'Pang Pei Ling', 'ppl1234'),
-('G004', 'Lau Lim Siew', 'lls339'),
-('G005', 'Ahmad', 'ahmad1227'),
-('G006', 'John', 'john5566'),
-('G007', 'Peter', 'peter677');
+('G001', 'Ali bin Abu', 'ali12345'),
+('G002', 'Muthu', 'muthu443'),
+('G003', 'Pang Pei Ling', 'ppl12345'),
+('G004', 'Lau Lim Siew', 'lls33933'),
+('G005', 'Ahmad', 'ahmad122');
 
 -- --------------------------------------------------------
 
@@ -53,8 +51,8 @@ INSERT INTO `guru` (`IdGuru`, `NamaGuru`, `KatalaluanGuru`) VALUES
 --
 
 CREATE TABLE `kelas` (
-  `IdKelas` varchar(10) NOT NULL,
-  `Kelas` varchar(10) NOT NULL
+  `IdKelas` varchar(4) NOT NULL,
+  `Kelas` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -62,8 +60,6 @@ CREATE TABLE `kelas` (
 --
 
 INSERT INTO `kelas` (`IdKelas`, `Kelas`) VALUES
-('K301', '3 Wawasan'),
-('K302', '3 Bestari'),
 ('K401', '4 Wawasan'),
 ('K402', '4 Bestari'),
 ('K501', '5 Wawasan'),
@@ -76,11 +72,11 @@ INSERT INTO `kelas` (`IdKelas`, `Kelas`) VALUES
 --
 
 CREATE TABLE `keputusan` (
-  `IdKeputusan` int(11) NOT NULL,
-  `IdMurid` varchar(10) NOT NULL,
-  `IdSoalan` varchar(10) NOT NULL,
+  `IdKeputusan` int(3) NOT NULL,
+  `IdMurid` varchar(4) NOT NULL,
+  `IdSoalan` varchar(4) NOT NULL,
   `JawapanMurid` varchar(1) NOT NULL,
-  `Kebenaran` varchar(10) NOT NULL,
+  `Kebenaran` varchar(5) NOT NULL,
   `Tarikh` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -89,31 +85,30 @@ CREATE TABLE `keputusan` (
 --
 
 INSERT INTO `keputusan` (`IdKeputusan`, `IdMurid`, `IdSoalan`, `JawapanMurid`, `Kebenaran`, `Tarikh`) VALUES
-(5, 'M003', 'S006', 'B', 'betul', '2021-07-07'),
-(6, 'M003', 'S018', 'C', 'salah', '2021-07-07'),
-(7, 'M001', 'S002', 'B', 'betul', '2021-07-09'),
-(8, 'M001', 'S014', 'B', 'betul', '2021-07-09'),
-(9, 'M001', 'S007', 'B', 'salah', '2021-07-09'),
-(10, 'M001', 'S008', 'C', 'salah', '2021-07-09'),
-(11, 'M001', 'S002', 'B', 'betul', '2021-07-09'),
-(12, 'M001', 'S014', 'B', 'betul', '2021-07-09'),
-(15, 'M001', 'S002', 'B', 'betul', '2021-07-09'),
-(16, 'M001', 'S014', 'B', 'betul', '2021-07-09'),
-(17, 'M001', 'S010', 'B', 'betul', '2021-07-09'),
-(18, 'M001', 'S023', 'A', 'salah', '2021-07-09'),
-(19, 'M001', 'S007', 'B', 'salah', '2021-07-09'),
-(21, 'M001', 'S002', 'B', 'betul', '2021-07-09'),
-(22, 'M001', 'S014', 'B', 'betul', '2021-07-09'),
-(23, 'M001', 'S006', 'B', 'betul', '2021-07-09'),
-(24, 'M001', 'S018', 'B', 'betul', '2021-07-09'),
-(27, 'M001', 'S002', 'B', 'betul', '2021-07-23'),
-(28, 'M001', 'S014', 'B', 'betul', '2021-07-23'),
-(29, 'M002', 'S002', 'A', 'salah', '2021-08-15'),
-(30, 'M002', 'S014', 'B', 'betul', '2021-08-15'),
-(31, 'M002', 'S012', 'B', 'salah', '2021-08-15'),
-(32, 'M002', 'S025', 'A', 'betul', '2021-08-15'),
-(33, 'M001', 'S001', 'A', 'betul', '2021-08-22'),
-(34, 'M001', 'S019', 'C', 'betul', '2021-08-22');
+(1, 'M001', 'S002', 'B', 'betul', '2021-08-23'),
+(2, 'M001', 'S014', 'B', 'betul', '2021-08-23'),
+(3, 'M002', 'S002', 'B', 'betul', '2021-08-23'),
+(4, 'M002', 'S014', 'A', 'salah', '2021-08-23'),
+(5, 'M002', 'S001', 'A', 'betul', '2021-08-23'),
+(6, 'M002', 'S019', 'C', 'betul', '2021-08-23'),
+(7, 'M003', 'S013', 'B', 'salah', '2021-08-23'),
+(8, 'M003', 'S026', 'B', 'salah', '2021-08-23'),
+(9, 'M003', 'S008', 'D', 'betul', '2021-08-23'),
+(10, 'M003', 'S021', 'A', 'betul', '2021-08-23'),
+(11, 'M003', 'S027', 'B', 'betul', '2021-08-23'),
+(12, 'M004', 'S007', 'B', 'salah', '2021-08-23'),
+(13, 'M004', 'S020', 'B', 'salah', '2021-08-23'),
+(14, 'M004', 'S009', 'A', 'betul', '2021-08-23'),
+(15, 'M004', 'S022', 'B', 'betul', '2021-08-23'),
+(16, 'M005', 'S004', 'C', 'betul', '2021-08-23'),
+(17, 'M005', 'S017', 'B', 'salah', '2021-08-23'),
+(18, 'M005', 'S005', 'A', 'betul', '2021-08-23'),
+(19, 'M005', 'S016', 'A', 'salah', '2021-08-23'),
+(20, 'M001', 'S011', 'C', 'betul', '2021-08-23'),
+(21, 'M001', 'S024', 'D', 'betul', '2021-08-23'),
+(22, 'M001', 'S003', 'D', 'betul', '2021-08-23'),
+(23, 'M001', 'S015', 'C', 'betul', '2021-08-23'),
+(24, 'M001', 'S028', 'A', 'betul', '2021-08-23');
 
 -- --------------------------------------------------------
 
@@ -122,10 +117,10 @@ INSERT INTO `keputusan` (`IdKeputusan`, `IdMurid`, `IdSoalan`, `JawapanMurid`, `
 --
 
 CREATE TABLE `murid` (
-  `IdMurid` varchar(10) NOT NULL,
+  `IdMurid` varchar(4) NOT NULL,
   `NamaMurid` varchar(100) NOT NULL,
   `KatalaluanMurid` varchar(8) NOT NULL,
-  `IdKelas` varchar(10) NOT NULL
+  `IdKelas` varchar(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -134,11 +129,10 @@ CREATE TABLE `murid` (
 
 INSERT INTO `murid` (`IdMurid`, `NamaMurid`, `KatalaluanMurid`, `IdKelas`) VALUES
 ('M001', 'Tee Qi Jing', 'jing1234', 'K501'),
-('M002', 'Tee Qi Bin', 'bin123', 'K401'),
-('M003', 'Ali', 'ali889', 'K402'),
+('M002', 'Tee Qi Bin', 'bin12345', 'K401'),
+('M003', 'Ali', 'ali88988', 'K402'),
 ('M004', 'Muthu', 'muthu677', 'K402'),
-('M005', 'John', 'john5487', 'K401'),
-('M006', 'Bobby', 'bobby123', 'K402');
+('M005', 'John', 'john5487', 'K401');
 
 -- --------------------------------------------------------
 
@@ -147,15 +141,15 @@ INSERT INTO `murid` (`IdMurid`, `NamaMurid`, `KatalaluanMurid`, `IdKelas`) VALUE
 --
 
 CREATE TABLE `soalan` (
-  `IdSoalan` varchar(5) NOT NULL,
+  `IdSoalan` varchar(4) NOT NULL,
   `NamaSoalan` varchar(255) NOT NULL,
   `PilihanA` varchar(255) NOT NULL,
   `PilihanB` varchar(255) NOT NULL,
   `PilihanC` varchar(255) NOT NULL,
   `PilihanD` varchar(255) NOT NULL,
   `Jawapan` varchar(1) NOT NULL,
-  `IdGuru` varchar(10) NOT NULL,
-  `IdTopik` varchar(5) NOT NULL
+  `IdGuru` varchar(4) NOT NULL,
+  `IdTopik` varchar(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -190,7 +184,8 @@ INSERT INTO `soalan` (`IdSoalan`, `NamaSoalan`, `PilihanA`, `PilihanB`, `Pilihan
 ('S025', 'Yang manakah di bawah bukan prinsip reka bentuk interaksi?', 'Boleh diggodam', 'Konsistensi', 'Boleh dipelajari', 'Kebolehan membuat pemerhatian', 'A', 'G003', '3.1'),
 ('S026', 'Apakah kelebihan menggunakan struktur modul atau subatur cara?', 'Lebih mudah untuk digunakan semula', 'Supaya projek menjadi lebih kompleks', 'Mengelakkan penggodaman', 'Lebih susah untuk menangani projek komputer', 'A', 'G001', '3.2'),
 ('S027', 'Yang manakah di bawah bukan jenis kekardinalan?', '1:1', 'M:1', 'M:N', '1:M', 'B', 'G001', '2.1'),
-('S028', 'Yang manakah di bawah bukan komponen dalam analisi IPO', 'Mula', 'Input', 'Output', 'Proses', 'A', 'G001', '1.2');
+('S028', 'Yang manakah di bawah bukan komponen dalam analisi IPO', 'Mula', 'Input', 'Output', 'Proses', 'A', 'G001', '1.2'),
+('S029', 'NamaSoalan1', 'PilihanA1', 'PilihanB1', 'PilihanC1', 'PilihanD1', 'A', 'G002', '3.1');
 
 -- --------------------------------------------------------
 
@@ -199,7 +194,7 @@ INSERT INTO `soalan` (`IdSoalan`, `NamaSoalan`, `PilihanA`, `PilihanB`, `Pilihan
 --
 
 CREATE TABLE `topik` (
-  `IdTopik` varchar(5) NOT NULL,
+  `IdTopik` varchar(3) NOT NULL,
   `NamaTopik` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -258,8 +253,8 @@ ALTER TABLE `murid`
 --
 ALTER TABLE `soalan`
   ADD PRIMARY KEY (`IdSoalan`),
-  ADD KEY `soalan_ibfk_1` (`IdGuru`),
-  ADD KEY `soalan_ibfk_2` (`IdTopik`);
+  ADD KEY `IdGuru` (`IdGuru`),
+  ADD KEY `IdTopik` (`IdTopik`);
 
 --
 -- Indexes for table `topik`
@@ -275,7 +270,7 @@ ALTER TABLE `topik`
 -- AUTO_INCREMENT for table `keputusan`
 --
 ALTER TABLE `keputusan`
-  MODIFY `IdKeputusan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `IdKeputusan` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- Constraints for dumped tables
@@ -285,8 +280,8 @@ ALTER TABLE `keputusan`
 -- Constraints for table `keputusan`
 --
 ALTER TABLE `keputusan`
-  ADD CONSTRAINT `keputusan_ibfk_1` FOREIGN KEY (`IdMurid`) REFERENCES `murid` (`IdMurid`),
-  ADD CONSTRAINT `keputusan_ibfk_2` FOREIGN KEY (`IdSoalan`) REFERENCES `soalan` (`IdSoalan`);
+  ADD CONSTRAINT `keputusan_ibfk_1` FOREIGN KEY (`IdMurid`) REFERENCES `murid` (`IdMurid`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `keputusan_ibfk_2` FOREIGN KEY (`IdSoalan`) REFERENCES `soalan` (`IdSoalan`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `murid`

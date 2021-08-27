@@ -20,7 +20,7 @@
 			<div id="TeacherContent">
                 <h1>Kemaskini Soalan</h1>
 				
-				<form action='SoalanUpdate.php' method='POST'>
+				<form action='SoalanUpdate.php' method='POST' autocomplete="off">
 					<div class='txt_field'>
                         <select name='IdSoalan' id='IdSoalan' required>
                             <?php
@@ -124,13 +124,13 @@
                 $IdGuru = $_POST['IdGuru'];	
                 $IdTopik = $_POST['IdTopik'];
 
-				if(strlen($Jawapan) != 1 || $Jawapan != 'A' || $Jawapan != 'B' || $Jawapan != 'C' || $Jawapan != 'D'){
+				if(strlen($Jawapan) != 1){
 					echo "
 					<script>
-						alert('Jawapan mesti huruf besar A, B, C atau D sahaja!!!');
+						alert('Jawapan mesti 1 aksara sahaja!!!');
 						window.location = 'SoalanUpdate.php';
 					</script>";
-				}else{
+				}else if($Jawapan == "A" || $Jawapan == "B" || $Jawapan == "C" || $Jawapan == "D"){
 
 					//Update new data 
 					$sql = "UPDATE soalan 
@@ -144,6 +144,12 @@
 						echo "<script>alert('Tidak berjaya kemaskini soalan');</script>";
 					}
 					echo "<script>window.location='SoalanUpdate.php';</script>";
+				}else {
+					echo "
+					<script>
+						alert('Jawapan mesti huruf besar A, B, C atau D sahaja!!!');
+						window.location = 'SoalanUpdate.php';
+					</script>";
 				}
 				
 			}

@@ -35,7 +35,7 @@
 			<div class="center">
 				<h1>Tambah Topik Baharu</h1>
 				
-				<form action="TopikInsert.php" method="POST">
+				<form action="TopikInsert.php" method="POST" autocomplete="off">
 					<div class="txt_field">
 						<input type="text" id="IdTopik" name="IdTopik" required>
 						<span></span>

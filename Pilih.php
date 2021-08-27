@@ -56,7 +56,7 @@
 				<div id='TeacherContent'>
 					<h1>Tambah Soalan Baharu</h1>
 				
-					<form action='Pilih.php' method='POST'>
+					<form action='Pilih.php' method='POST' autocomplete='off'>
 						<div class='txt_field'>
 							<input type='text' id='IdSoalan' name='IdSoalan' required>
 							<span></span>

@@ -21,9 +21,9 @@
 			<div class="center">
 				<h1>Daftar Guru</h1>
 				
-				<form action="DaftarGuru.php" method="POST">
+				<form action="DaftarGuru.php" method="POST" autocomplete="off">
 					<div class="txt_field">
-						<input type="text" id="IdGuru" name="IdGuru" required>
+						<input type="text" id="IdGuru" name="IdGuru" onfocusin="focusIdGuru()" onfocusout="clearIdGuru()" required>
 						<span></span>
 						<label>Id Guru</label>
 					</div>
@@ -35,7 +35,7 @@
 					</div>
 
 					<div class="txt_field">
-						<input type="password" id="KatalaluanGuru" name="KatalaluanGuru" required>
+						<input type="password" id="KatalaluanGuru" name="KatalaluanGuru" onfocusin="focusPassGuru()" onfocusout="clearPassGuru()" required>
 						<span></span>
 						<label>Katalaluan Guru</label>
 					</div>
@@ -111,5 +111,20 @@
 		<?php
 			include("footer.php");
 		?>
+		<script>
+			
+			function focusIdGuru(){
+				document.getElementById("IdGuru").placeholder = "G001 4 char"
+			}
+			function focusPassGuru(){
+				document.getElementById("KatalaluanGuru").placeholder = "12345678 8 char"
+			}
+			function clearIdGuru(){
+				document.getElementById("IdGuru").placeholder = ""
+			}
+			function clearPassGuru(){
+				document.getElementById("KatalaluanGuru").placeholder = ""
+			}
+		</script>
 	</body>
 </html>

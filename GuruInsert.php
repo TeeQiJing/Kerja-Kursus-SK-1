@@ -25,7 +25,7 @@
 			<div class="center">
 				<h1>Tambah Guru Baharu</h1>
 				
-				<form action="GuruInsert.php" method="POST">
+				<form action="GuruInsert.php" method="POST" autocomplete="off">
 					<div class="txt_field">
 						<input type="text" id="IdGuru" name="IdGuru" required>
 						<span></span>

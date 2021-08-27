@@ -11,7 +11,7 @@
 		<link href="header.css" rel="stylesheet">
 		<link href="borang.css" rel="stylesheet">
 	</head>
-	<body>
+	<body onclick="click()">
 		<?php
 			include("header.php");
 		?>
@@ -20,11 +20,12 @@
 			<div class="center">
 				<h1>Daftar Murid</h1>
 				
-				<form action="DaftarMurid.php" method="POST">
+				<form action="DaftarMurid.php" method="POST" autocomplete="off">
 					<div class="txt_field">
-						<input type="text" id="IdMurid" name="IdMurid" required>
+						<input type="text" id="IdMurid" name="IdMurid" onfocusin="focusIdMurid()" onfocusout="clearIdMurid()" required>
 						<span></span>
 						<label>Id Murid</label>
+						
 					</div>
 
 					<div class="txt_field">
@@ -34,7 +35,7 @@
 					</div>
 
 					<div class="txt_field">
-						<input type="password" id="KatalaluanMurid" name="KatalaluanMurid" required>
+						<input type="password" id="KatalaluanMurid" name="KatalaluanMurid" onfocusin="focusPassMurid()" onfocusout="clearPassMurid()" required>
 						<span></span>
 						<label>Katalaluan Murid</label>
 					</div>
@@ -129,5 +130,20 @@
 		<?php
 			include("footer.php");
 		?>
+		<script>
+			
+			function focusIdMurid(){
+				document.getElementById("IdMurid").placeholder = "M001 4 char"
+			}
+			function focusPassMurid(){
+				document.getElementById("KatalaluanMurid").placeholder = "12345678 8 char"
+			}
+			function clearIdMurid(){
+				document.getElementById("IdMurid").placeholder = ""
+			}
+			function clearPassMurid(){
+				document.getElementById("KatalaluanMurid").placeholder = ""
+			}
+		</script>
 	</body>
 </html>

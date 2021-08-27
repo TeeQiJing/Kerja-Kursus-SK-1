@@ -35,7 +35,8 @@
 					</div>
 
 					<div class="txt_field">
-						<input type="password" id="KatalaluanGuru" name="KatalaluanGuru" onfocusin="focusPassGuru()" onfocusout="clearPassGuru()" required>
+						<input type="password" id="KatalaluanGuru" name="KatalaluanGuru" onfocusin="focusPassGuru()" 
+						onfocusout="clearPassGuru()" required>
 						<span></span>
 						<label>Katalaluan Guru</label>
 					</div>

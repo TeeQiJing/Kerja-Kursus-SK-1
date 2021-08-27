@@ -35,7 +35,8 @@
 					</div>
 
 					<div class="txt_field">
-						<input type="password" id="KatalaluanMurid" name="KatalaluanMurid" onfocusin="focusPassMurid()" onfocusout="clearPassMurid()" required>
+						<input type="password" id="KatalaluanMurid" name="KatalaluanMurid" onfocusin="focusPassMurid()" 
+						onfocusout="clearPassMurid()" required>
 						<span></span>
 						<label>Katalaluan Murid</label>
 					</div>
@@ -103,7 +104,8 @@
 					}else{
 						//if IdMurid is not found(Database does not has that IdMurid, user can daftar)
 						//Daftar(Insert data into database)
-						$sql = "INSERT INTO murid(IdMurid, NamaMurid, KatalaluanMurid, IdKelas) VALUES('$IdMurid', '$NamaMurid', '$KatalaluanMurid', '$IdKelas')";
+						$sql = "INSERT INTO murid(IdMurid, NamaMurid, KatalaluanMurid, IdKelas) 
+						VALUES('$IdMurid', '$NamaMurid', '$KatalaluanMurid', '$IdKelas')";
 						
 						//if data are inserted successfully...
 						if(mysqli_query($conn, $sql)){

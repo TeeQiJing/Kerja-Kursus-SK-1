@@ -3,7 +3,6 @@
 	height: 100%;
 	position: relative;
 }
-
 #StudentContent {
 	position: absolute;
 	top: 400px;
@@ -14,7 +13,6 @@
 	border-radius: 10px;
 	font-size: 1.5em;
 }
-
 #StudentContent h1 {
     text-align: center;
 	padding: 0 0 15px 0;
@@ -22,7 +20,6 @@
 	font-size: 30px;
 	font-family: Comic Sans MS, Comic Sans, cursive;
 }
-
 #StudentContent form {
 	padding: 0 40px;
 	box-sizing: border-box;
@@ -42,7 +39,6 @@
 	pointer-events: none;
 	transition: .5s;
 }
-
 input[type="submit"]{
 	width: 100%;
 	height: 50px;
@@ -59,9 +55,7 @@ input[type="submit"]{
 input[type="submit"]:hover{
 	border-color: #2691d9;
 	transition: .5s;
-
 }
-
 #StudentContent select {
 	border: none;
 	width: 70%;
@@ -75,16 +69,9 @@ input[type="submit"]:hover{
 	outline: none;
 	border: none;
 }
-
-
 #StudentContent option {
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-
-
-
-
-
 #TeacherContent {
 	position: absolute;
 	top: 550px;
@@ -93,9 +80,7 @@ input[type="submit"]:hover{
 	width: 800px;
 	background-color: white;
 	border-radius: 10px;
-	
 }
-
 #TeacherContent h1 {
     text-align: center;
 	padding: 0 0 15px 0;
@@ -108,7 +93,6 @@ input[type="submit"]:hover{
 	padding: 0 40px;
 	box-sizing: border-box;
 }
-
 #TeacherContent form .txt_field {
 	position: relative;
 	border-bottom: 2px solid #adadad;
@@ -168,21 +152,16 @@ input[type="submit"]:hover{
 	height: 2px;
 	background: #2691d9;
 	transition: .5s;
-
 }
 #TeacherContent .txt_field input:focus ~label,
 #TeacherContent .txt_field input:valid ~label {
 	top: -5px;
 	color: #2691d9;
-
 }
-
 #TeacherContent .txt_field input:focus ~span::before,
 #TeacherContent .txt_field input:valid ~span::before {
 	width: 100%;
-
 }
-
 #TeacherContent select {
 	border: none;
 	width: 70%;
@@ -190,15 +169,11 @@ input[type="submit"]:hover{
 	font-size: 1.2em;
 	margin-left: 30%;
 	margin-bottom: 10px;
-	
-	
 }
 #TeacherContent select:focus,#TeacherContent select:valid {
 	outline: none;
 	border: none;
 }
-
-
 #TeacherContent option {
 	font-family: Comic Sans MS, Comic Sans, cursive;
 	font-size: 0.8em;

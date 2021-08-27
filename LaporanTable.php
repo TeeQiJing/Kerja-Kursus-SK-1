@@ -2,7 +2,6 @@
 	// Start session
 	session_start();
     error_reporting(E_ALL & ~E_NOTICE);
-
 ?>
 
 <!DOCTYPE html>
@@ -29,7 +28,6 @@
 			include("header.php");
             include("sambungan.php");
 		?>
-
 
 		<div id="content">
             <div id="quickSearch">

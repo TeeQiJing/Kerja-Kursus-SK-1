@@ -6,13 +6,11 @@
 	font-family: Comic Sans MS, Comic Sans, cursive;
 
 }
-
 table {
 	border-radius: 10px;
 	overflow: hidden;
 	box-shadow: 15px 15px 6px rgba(106, 96, 96, 0.7);
 }
-
 #laporanTitle {
 	padding: 10px;
 	margin-top: 120px;
@@ -23,7 +21,6 @@ table {
 	transform: translate(-50%);
 	background-color: rgb(255, 255, 255);
 }
-
 #tableMurid {
 	margin-left: 50%;
 	transform: translate(-50%);
@@ -46,12 +43,10 @@ th {
 	color: white;
 	background-color: #8301da;
 }
-
 tr:nth-child(even){
 	background-color: #cc99ff;
 	text-align: center;
 }
-
 tr:nth-child(odd){
 	background-color: #cb97d8;
 	text-align: center;
@@ -68,11 +63,9 @@ tr:nth-child(odd){
 	width: auto;
 	margin-left: 10px;
 }
-
 #ConcluKeputusan {
 	font-size: 1.3em;
 }
-
 input[type=checkbox]{
 	margin: 2px;
 	padding: 0;
@@ -121,20 +114,16 @@ input[type=checkbox]{
 	background-color: #da0166;
 	padding: 5px 10px;
 	border: 1px solid #dd016f;
-
-
 }
 #print:hover, #delete:hover, #analisis:hover {
 	background-color: #8301da79;
 	border: 1px solid #a306c2;
 }
-
 #tableGuru {
 	margin-left: 50%;
 	transform: translate(-50%);
 	width: 70%;
 }
-
 select {
 	width: 180px;
 	text-align: center;
@@ -175,7 +164,6 @@ select {
 #jadualGuru, #jadualTopik, #jadualSoalan, #jadualKelas {
     position: relative;
     top: 0%;
-    
 } 
 #jadualMurid {
     position: relative;

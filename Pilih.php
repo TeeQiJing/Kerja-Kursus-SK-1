@@ -28,28 +28,6 @@
 
 			echo"
 			<div id='content'>";
-
-			// //if IdMurid is not empty...(Means that the user is a student)
-			// if(!empty($_SESSION['IdMurid'])){
-			// echo"
-			// <div id='StudentContent'>
-			// 	<h1>SILA PILIH TOPIK</h1>
-
-			// 	<form action='Kuiz.php' method='post' id='StudentForm'>
-			// 		<div class='txt_field' id='IdTopikTextField'>
-			// 			<select name='IdTopikSelect' id='IdTopik' required>";
-			// 				$result = mysqli_query($conn, "SELECT * FROM topik ORDER BY IdTopik ASC");
-			// 				while($topik = mysqli_fetch_assoc($result)){
-			// 					echo"<option value='$topik[IdTopik]'>$topik[IdTopik]  -  $topik[NamaTopik]</option>";
-			// 				}
-			// echo"
-			// 			</select>
-			// 			<span></span>
-			// 			<label>Sila Pilih Topik</label>
-			// 		</div>
-			// 		<input type='submit' value='MULA'>
-			// 	</form>
-			// </div>";
 				
 			if(!empty($_SESSION['IdGuru'])){
 				echo"

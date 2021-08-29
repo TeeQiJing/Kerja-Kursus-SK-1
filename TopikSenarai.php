@@ -9,12 +9,13 @@
 		<title>Senarai Topik</title>
 		<link href="Laporan.css" rel="stylesheet">
 		<link href="header.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
         <style>
             table {
                 margin-left: 50%;
                 transform: translateX(-50%);
                 width: 80%;
-                margin-top: 130px;
+                margin-top: 200px;
                 margin-bottom: 0px;
                 border-radius: 10px;
                 overflow: hidden;
@@ -55,34 +56,92 @@
 
 		<div id="content">
             <form action="TopikSenarai.php" method="POST">
-            <table id="tableTopik">
-                <tr>
-                    <th colspan="100%" class="jadualTitle">Senarai Topik</th>
-                </tr>
-                <tr>
-                    <th>Id Topik</th>
-                    <th>Nama Topik</th>
-                    <th><input type='checkbox' id='checkAll' value=''></th>
-                </tr>
-
-                <?php
-                    $result3 = mysqli_query($conn, "SELECT * FROM topik");
-                    while($row3 = mysqli_fetch_array($result3)){
-                        echo "<tr>";
-                        echo "<td>" . $row3['IdTopik'] . "</td>";
-                        echo "<td>" . $row3['NamaTopik'] . "</td>";
-                        echo "<td padding=0><input type='checkbox' name='checkBox[]' class='checkBox' value='$row3[IdTopik]'></td>";
-                        echo "</tr>";
-                    }
-                    echo"
-                    <tr>
-						<td colspan='100%'>
-							<button id='delete' name='delete'>Delete</button>
-						</td>	
-					</tr>";
-                ?>
-            </table>
+                <div class="wrapper">
+                    <input type="text" class="input" name="IdTopik" placeholder="Cari Id Topik, type 'all' to show all" required>
+                    <div id="searchbtn" class="searchbtn"><i class="fas fa-search"></i></div>
+                </div>
+                <input type="submit" id="cari" value="Cari" name="cari" style="display: hidden;">
             </form>
+            <script>
+                var fakebtn = document.getElementById("searchbtn");
+                fakebtn.onclick = function(){
+                    document.getElementById("cari").click();
+                }
+            </script>
+            <?php
+                if(isset($_POST['cari'])){
+                    $IdTopik = $_POST['IdTopik'];
+                    if($IdTopik == "all"){
+                        $sql = "SELECT * FROM topik ORDER BY IdTopik";
+                    }else{
+                        $sql = "SELECT * FROM topik WHERE IdTopik='$IdTopik'";
+                    }
+            
+                    echo'
+                    <form action="TopikSenarai.php" method="POST">
+                        <table id="tableTopik">
+                            <tr>
+                                <th colspan="100%" class="jadualTitle">Senarai Topik</th>
+                            </tr>
+                            <tr>
+                                <th>Id Topik</th>
+                                <th>Nama Topik</th>
+                                <th><input type="checkbox" id="checkAll" value=""></th>
+                            </tr>';
+                            ?>
+                            <?php
+                                $result3 = mysqli_query($conn, $sql);
+                                while($row3 = mysqli_fetch_array($result3)){
+                                    echo "<tr>";
+                                    echo "<td>" . $row3['IdTopik'] . "</td>";
+                                    echo "<td>" . $row3['NamaTopik'] . "</td>";
+                                    echo "<td padding=0><input type='checkbox' name='checkBox[]' class='checkBox' value='$row3[IdTopik]'></td>";
+                                    echo "</tr>";
+                                }
+                                echo'
+                                <tr>
+                                    <td colspan="100%">
+                                        <button id="delete" name="delete">Delete</button>
+                                    </td>	
+                                </tr>
+                            ?>
+                        </table>
+                    </form>';
+                }else {
+                    echo'
+                    <form action="TopikSenarai.php" method="POST">
+                        <table id="tableTopik">
+                            <tr>
+                                <th colspan="100%" class="jadualTitle">Senarai Topik</th>
+                            </tr>
+                            <tr>
+                                <th>Id Topik</th>
+                                <th>Nama Topik</th>
+                                <th><input type="checkbox" id="checkAll" value=""></th>
+                            </tr>';
+                            ?>
+                            <?php
+                                $result3 = mysqli_query($conn, "SELECT * FROM topik ORDER BY IdTopik");
+                                while($row3 = mysqli_fetch_array($result3)){
+                                    echo "<tr>";
+                                    echo "<td>" . $row3['IdTopik'] . "</td>";
+                                    echo "<td>" . $row3['NamaTopik'] . "</td>";
+                                    echo "<td padding=0><input type='checkbox' name='checkBox[]' class='checkBox' value='$row3[IdTopik]'></td>";
+                                    echo "</tr>";
+                                }
+                                echo'
+                                <tr>
+                                    <td colspan="100%">
+                                        <button id="delete" name="delete">Delete</button>
+                                    </td>	
+                                </tr>
+                            ?>
+                        </table>
+                    </form>';
+                    ?>
+            <?php
+                }
+            ?>
            
 		</div>
 		<?php

@@ -11,12 +11,13 @@
 		<title>Senarai Guru</title>
 		<link href="Laporan.css" rel="stylesheet">
 		<link href="header.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
         <style>
             table {
                 margin-left: 50%;
                 transform: translateX(-50%);
                 width: 80%;
-                margin-top: 130px;
+                margin-top: 200px;
                 margin-bottom: 0px;
                 border-radius: 10px;
                 overflow: hidden;
@@ -56,38 +57,93 @@
 
 
 		<div id="content">
-            
             <form action="GuruSenarai.php" method="POST">
-            <table id="tableGuru">
-                <tr>
-                    <th colspan="100%" class="jadualTitle">Senarai Guru</th>
-                </tr>
-                <tr>
-                    <th>Id Guru</th>
-                    <th>Nama Guru</th>
-                    <th>Katalaluan Guru</th>
-                    <th><input type='checkbox' id='checkAll' value=''></th>
-                </tr>
-                
-                <?php
-                    $result2 = mysqli_query($conn, "SELECT * FROM guru");
-                    while($row2 = mysqli_fetch_array($result2)){
-                        echo "<tr>";
-                        echo "<td>" . $row2['IdGuru'] . "</td>";
-                        echo "<td>" . $row2['NamaGuru'] . "</td>";
-                        echo "<td>" . $row2['KatalaluanGuru'] . "</td>";
-                        echo "<td padding=0><input type='checkbox' name='checkBox[]' class='checkBox' value='$row2[IdGuru]'></td>";
-                        echo "</tr>";
-                    }
-                    echo"
-                    <tr>
-						<td colspan='100%'>
-							<button id='delete' name='delete'>Delete</button>
-						</td>	
-					</tr>";
-                ?>
-            </table>
+                <div class="wrapper">
+                    <input type="text" class="input" name="IdGuru" placeholder="Cari Id Guru, type 'all' to show all" required>
+                    <div id="searchbtn" class="searchbtn"><i class="fas fa-search"></i></div>
+                </div>
+                <input type="submit" id="cari" value="Cari" name="cari" style="display: hidden;">
             </form>
+            <script>
+                var fakebtn = document.getElementById("searchbtn");
+                fakebtn.onclick = function(){
+                    document.getElementById("cari").click();
+                }
+            </script>
+            <?php
+            if(isset($_POST['cari'])){
+                $IdGuru = $_POST['IdGuru'];
+                if($IdGuru == "all"){
+                    $sql = "SELECT * FROM guru ORDER BY IdGuru";
+                }else{
+                    $sql = "SELECT * FROM guru WHERE IdGuru='$IdGuru'";
+                }
+                echo'
+                <form action="GuruSenarai.php" method="POST">
+                <table id="tableGuru">
+                    <tr>
+                        <th colspan="100%" class="jadualTitle">Senarai Guru</th>
+                    </tr>
+                    <tr>
+                        <th>Id Guru</th>
+                        <th>Nama Guru</th>
+                        <th>Katalaluan Guru</th>
+                        <th><input type="checkbox" id="checkAll" value=""></th>
+                    </tr>';?>
+                    
+                    <?php
+                        $result2 = mysqli_query($conn, $sql);
+                        while($row2 = mysqli_fetch_array($result2)){
+                            echo "<tr>";
+                            echo "<td>" . $row2['IdGuru'] . "</td>";
+                            echo "<td>" . $row2['NamaGuru'] . "</td>";
+                            echo "<td>" . $row2['KatalaluanGuru'] . "</td>";
+                            echo "<td padding=0><input type='checkbox' name='checkBox[]' class='checkBox' value='$row2[IdGuru]'></td>";
+                            echo "</tr>";
+                        }
+                        echo'
+                        <tr>
+                            <td colspan="100%">
+                                <button id="delete" name="delete">Delete</button>
+                            </td>	
+                        </tr>
+                    </table>
+                </form>';
+    
+            }else{
+                echo'
+                <form action="GuruSenarai.php" method="POST">
+                <table id="tableGuru">
+                    <tr>
+                        <th colspan="100%" class="jadualTitle">Senarai Guru</th>
+                    </tr>
+                    <tr>
+                        <th>Id Guru</th>
+                        <th>Nama Guru</th>
+                        <th>Katalaluan Guru</th>
+                        <th><input type="checkbox" id="checkAll" value=""></th>
+                    </tr>';?>
+                    
+                    <?php
+                        $result2 = mysqli_query($conn, "SELECT * FROM guru");
+                        while($row2 = mysqli_fetch_array($result2)){
+                            echo "<tr>";
+                            echo "<td>" . $row2['IdGuru'] . "</td>";
+                            echo "<td>" . $row2['NamaGuru'] . "</td>";
+                            echo "<td>" . $row2['KatalaluanGuru'] . "</td>";
+                            echo "<td padding=0><input type='checkbox' name='checkBox[]' class='checkBox' value='$row2[IdGuru]'></td>";
+                            echo "</tr>";
+                        }
+                        echo'
+                        <tr>
+                            <td colspan="100%">
+                                <button id="delete" name="delete">Delete</button>
+                            </td>	
+                        </tr>
+                    </table>
+                </form>';
+            }
+            ?>
             
 		</div>
 		<?php

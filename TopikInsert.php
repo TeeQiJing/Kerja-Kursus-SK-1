@@ -65,7 +65,7 @@
 				$IdTopik = $_POST['IdTopik'];
 				$NamaTopik = $_POST['NamaTopik'];
 
-				if(strlen($IdTopik) != 3 || is_numeric($IdTopik[0]) || is_numeric($IdTopik[2])){
+				if(strlen($IdTopik) != 3 || !is_numeric($IdTopik[0]) || !is_numeric($IdTopik[2])){
 					echo "
 					<script>
 						alert('Id Topik mesti 3 aksara dan mematuhi format x.x (E.g. 3.2)!!!');

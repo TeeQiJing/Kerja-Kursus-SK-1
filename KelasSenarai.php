@@ -11,12 +11,13 @@
 		<title>Senarai Kelas</title>
 		<link href="Laporan.css" rel="stylesheet">
 		<link href="header.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
         <style>
             table {
                 margin-left: 50%;
                 transform: translateX(-50%);
                 width: 80%;
-                margin-top: 130px;
+                margin-top: 200px;
                 margin-bottom: 0px;
                 border-radius: 10px;
                 overflow: hidden;
@@ -57,34 +58,89 @@
 
 		<div id="content">
             <form action="KelasSenarai.php" method="POST">
-            <table id="tableKelas">
-                <tr>
-                    <th colspan="100%" class="jadualTitle">Senarai Kelas</th>
-                </tr>
-                <tr>
-                    <th>Id Kelas</th>
-                    <th>Nama Kelas</th>
-                    <th><input type='checkbox' id='checkAll' value=''></th>
-                </tr>
-                <span id="jadualKelas"></span>
-                <?php
-                    $result5 = mysqli_query($conn, "SELECT * FROM kelas");
-                    while($row5 = mysqli_fetch_array($result5)){
-                        echo "<tr>";
-                        echo "<td>" . $row5['IdKelas'] . "</td>";
-                        echo "<td>" . $row5['Kelas'] . "</td>";
-                        echo "<td padding=0><input type='checkbox' name='checkBox[]' class='checkBox' value='$row5[IdKelas]'></td>";
-                        echo "</tr>";
-                    }
-                    echo"
-                    <tr>
-						<td colspan='100%'>
-							<button id='delete' name='delete'>Delete</button>
-						</td>	
-					</tr>";
-                ?>
-            </table>
+                <div class="wrapper">
+                    <input type="text" class="input" name="IdKelas" placeholder="Cari Id Kelas, type 'all' to show all" required>
+                    <div id="searchbtn" class="searchbtn"><i class="fas fa-search"></i></div>
+                </div>
+                <input type="submit" id="cari" value="Cari" name="cari" style="display: hidden;">
             </form>
+            <script>
+                var fakebtn = document.getElementById("searchbtn");
+                fakebtn.onclick = function(){
+                    document.getElementById("cari").click();
+                }
+            </script>
+        <?php
+            if(isset($_POST['cari'])){
+                $IdKelas = $_POST['IdKelas'];
+                if($IdKelas == "all"){
+                    $sql = "SELECT * FROM kelas ORDER BY IdKelas";
+                }else{
+                    $sql = "SELECT * FROM kelas WHERE IdKelas='$IdKelas'";
+                }
+                echo'
+                <form action="KelasSenarai.php" method="POST">
+                <table id="tableKelas">
+                    <tr>
+                        <th colspan="100%" class="jadualTitle">Senarai Kelas</th>
+                    </tr>
+                    <tr>
+                        <th>Id Kelas</th>
+                        <th>Nama Kelas</th>
+                        <th><input type="checkbox" id="checkAll" value=""></th>
+                    </tr>
+                    <span id="jadualKelas"></span>';?>
+                    <?php
+                        $result5 = mysqli_query($conn, $sql);
+                        while($row5 = mysqli_fetch_array($result5)){
+                            echo "<tr>";
+                            echo "<td>" . $row5['IdKelas'] . "</td>";
+                            echo "<td>" . $row5['Kelas'] . "</td>";
+                            echo "<td padding=0><input type='checkbox' name='checkBox[]' class='checkBox' value='$row5[IdKelas]'></td>";
+                            echo "</tr>";
+                        }
+                        echo'
+                        <tr>
+                            <td colspan="100%">
+                                <button id="delete" name="delete">Delete</button>
+                            </td>	
+                        </tr>
+                    
+                </table>
+                </form>';
+            }else{
+                echo'
+                <form action="KelasSenarai.php" method="POST">
+                <table id="tableKelas">
+                    <tr>
+                        <th colspan="100%" class="jadualTitle">Senarai Kelas</th>
+                    </tr>
+                    <tr>
+                        <th>Id Kelas</th>
+                        <th>Nama Kelas</th>
+                        <th><input type="checkbox" id="checkAll" value=""></th>
+                    </tr>
+                    <span id="jadualKelas"></span>';?>
+                    <?php
+                        $result5 = mysqli_query($conn, "SELECT * FROM kelas");
+                        while($row5 = mysqli_fetch_array($result5)){
+                            echo "<tr>";
+                            echo "<td>" . $row5['IdKelas'] . "</td>";
+                            echo "<td>" . $row5['Kelas'] . "</td>";
+                            echo "<td padding=0><input type='checkbox' name='checkBox[]' class='checkBox' value='$row5[IdKelas]'></td>";
+                            echo "</tr>";
+                        }
+                        echo'
+                        <tr>
+                            <td colspan="100%">
+                                <button id="delete" name="delete">Delete</button>
+                            </td>	
+                        </tr>
+                    
+                </table>
+                </form>';
+            }
+        ?>
 		</div>
 		<?php
 			include("footer.php");

@@ -175,3 +175,43 @@ select {
     font-size: 1.1em;
     text-align: center;
 }
+.wrapper{
+	position: absolute;
+	top: 150px;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background: rgba(0, 0, 0,0.6);
+	max-width: 550px;
+	width: 100%;
+	padding: 15px;
+	display: flex;
+	justify-content: space-between;
+	border-radius: 5px;
+}
+.wrapper .input {
+	width: 85%;
+	padding: 15px 20px;
+	border: none;
+	border-radius: 10px;
+	font-weight: bold;
+	outline: none;
+	font-family: Comic Sans MS, Comic Sans, cursive;
+}
+.searchbtn {
+	background: Violet;
+	width: 9.8%;
+	border-radius: 100%;
+	position: relative;
+	cursor: pointer;
+	margin-left: 15px;
+}
+.searchbtn:hover {
+	background: MediumVioletRed;
+}
+.searchbtn .fas{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-size: 18px;
+}

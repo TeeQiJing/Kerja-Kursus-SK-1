@@ -198,7 +198,6 @@
                 // reassign click event handler
                 this.onclick = checkAll;
             }	
-            
         </script>
         <?php
             if(isset($_POST['delete'])){
@@ -209,7 +208,6 @@
                 }
                 echo "<script>window.location='SoalanSenarai.php'</script>";
             }
-            
         ?>
 	</body>
 </html>

@@ -4,7 +4,6 @@
     error_reporting(E_ALL & ~E_NOTICE);
 
 ?>
-
 <!DOCTYPE html>
 <html>
 	<head>
@@ -54,8 +53,6 @@
 			include("header.php");
             include("sambungan.php");
 		?>
-
-
 		<div id="content">
             <form action="KelasSenarai.php" method="POST">
                 <div class="wrapper">
@@ -136,7 +133,6 @@
                                 <button id="delete" name="delete">Delete</button>
                             </td>	
                         </tr>
-                    
                 </table>
                 </form>';
             }
@@ -156,19 +152,16 @@
                     cb.checked = checked;
                 });
             }
-                
             function checkAll() {
                 check();
                 // reassign click event handler
                 this.onclick = uncheckAll;
             }
-
             function uncheckAll() {
                 check(false);
                 // reassign click event handler
                 this.onclick = checkAll;
             }	
-            
         </script>
         <?php
             if(isset($_POST['delete'])){
@@ -179,7 +172,6 @@
                 }
                 echo "<script>window.location='KelasSenarai.php'</script>";
             }
-            
         ?>
 	</body>
 </html>

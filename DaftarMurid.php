@@ -3,7 +3,6 @@
 	session_start();
 	error_reporting(E_ALL & ~E_NOTICE);
 ?>
-
 <!DOCTYPE html>
 <html>
 	<head>
@@ -13,41 +12,34 @@
 	</head>
 	<body onclick="click()">
 		<?php
+			// include header(side menu bar and top title bar)
 			include("header.php");
 		?>
-
 		<div id="content">
 			<div class="center">
-				<h1>Daftar Murid</h1>
-				
+				<h1>Daftar Murid</h1>		
 				<form action="DaftarMurid.php" method="POST" autocomplete="off">
 					<div class="txt_field">
 						<input type="text" id="IdMurid" name="IdMurid" onfocusin="focusIdMurid()" onfocusout="clearIdMurid()" required>
 						<span></span>
 						<label>Id Murid</label>
-						
 					</div>
-
 					<div class="txt_field">
 						<input type="text" id="NamaMurid" name="NamaMurid" required>
 						<span></span>
 						<label>Nama Murid</label>
 					</div>
-
 					<div class="txt_field">
 						<input type="password" id="KatalaluanMurid" name="KatalaluanMurid" onfocusin="focusPassMurid()" 
 						onfocusout="clearPassMurid()" required>
 						<span></span>
 						<label>Katalaluan Murid</label>
 					</div>
-
 					<div class="txt_field" id="IdKelasTextField">
 						<select name="IdKelas" id="IdKelas" required>
-							
 							<?php
 								include("sambungan.php");
 								$result = mysqli_query($conn, "SELECT * FROM kelas");
-
 								while($kelas = mysqli_fetch_assoc($result)){
 									echo"<option value='$kelas[IdKelas]'>$kelas[Kelas]</option>";
 								}
@@ -56,34 +48,30 @@
 						<span></span>
 						<label id="SilaPilihKelas">Sila Pilih Kelas</label>
 					</div>
-				
 					<input type="submit" value="Daftar" name="DaftarMurid" id="DaftarMurid">
-
 					<div class="login_link">
 						Sudah Ada Akaun?  <a href="LogMasukMurid.php">Log Masuk Sini</a>
 					</div>
 				</form>
 			</div>
-
 		<?php
 			//include database connection
 			include("sambungan.php");
-
 			//if user click daftar button...
 			if(isset($_POST['DaftarMurid'])){
-
 				//Get the data inserted by user
 				$IdMurid = $_POST['IdMurid'];
 				$NamaMurid = $_POST['NamaMurid'];
 				$KatalaluanMurid = $_POST['KatalaluanMurid'];
 				$IdKelas = $_POST['IdKelas'];
-
+				//Test whether IdMurid is valid 
 				if(strlen($IdMurid) != 4 || $IdMurid[0] != 'M'){
 					echo "
 					<script>
 						alert('Id Murid mesti mula dari huruf M dan mesti 4 aksara dan mematuhi format Mxxx!!!');
 						window.location = 'DaftarMurid.php';
 					</script>";
+				// Test whether KatalaluanMurid is valid
 				}else if(strlen($KatalaluanMurid) != 8){
 					echo "
 					<script>
@@ -106,16 +94,13 @@
 						//Daftar(Insert data into database)
 						$sql = "INSERT INTO murid(IdMurid, NamaMurid, KatalaluanMurid, IdKelas) 
 						VALUES('$IdMurid', '$NamaMurid', '$KatalaluanMurid', '$IdKelas')";
-						
 						//if data are inserted successfully...
 						if(mysqli_query($conn, $sql)){
 							echo"New record is inserted sucessfully";
-
 							//store $NamaMurid and $IdMurid in $_SESSION[] for other uses purposes
 							$_SESSION["NamaMurid"] = $NamaMurid;
 							$_SESSION["IdMurid"] = $IdMurid;
 							$_SESSION["Status"] = "Murid";
-
 							//transfer user to laman utama
 							echo "
 							<script>
@@ -127,13 +112,11 @@
 				}
 			}
 		?>
-		
 		</div>
 		<?php
 			include("footer.php");
 		?>
 		<script>
-			
 			function focusIdMurid(){
 				document.getElementById("IdMurid").placeholder = "M001 4 char"
 			}

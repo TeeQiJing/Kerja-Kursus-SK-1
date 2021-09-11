@@ -3,7 +3,6 @@
 	session_start();
 	error_reporting(E_ALL & ~E_NOTICE);
 ?>
-
 <!DOCTYPE html>
 <html>
 	<head>
@@ -15,7 +14,6 @@
 		<?php
 			include("header.php");
 		?>
-		
 		<div id="content">
 			<div class="center" id="center">
 				<h1>LOG MASUK GURU</h1>
@@ -36,53 +34,39 @@
 					</div>
 				</form>
 			</div>
-			
 			<?php
 			//include database connection
 			include("sambungan.php");
-
 			//if user click login button...
 			if(isset($_POST['LogMasukGuru'])){
-
 				//Get the data inserted by user
 				$IdGuru = $_POST['IdGuru'];
 				$KatalaluanGuru = $_POST['KatalaluanGuru'];
-
 				//if the data are not empty...
 				if(!empty($IdGuru) AND !empty($KatalaluanGuru)){
-					
 					$sql = "SELECT * FROM guru WHERE IdGuru='$IdGuru' AND KatalaluanGuru='$KatalaluanGuru'";
 					$result = mysqli_query($conn, $sql);
-
 					//if can match IdGuru and KatalaluanGuru in database...
 					if(mysqli_num_rows($result)==1){
-
 						$Carisql = "SELECT * FROM guru WHERE IdGuru='$IdGuru'";
 						$result2 = mysqli_query($conn, $Carisql);
 						$row = mysqli_fetch_assoc($result2);
-
 						//store $NamaGuru and $IdGuru in $_SESSION[] for other uses purposes
 						$_SESSION["NamaGuru"] = $row["NamaGuru"];	
 						$_SESSION["IdGuru"] = $row["IdGuru"];	
 						$_SESSION["Status"] = "Guru";
-						
 						//transfer user to laman utama
 						header("location: LamanUtama.php");
-
 					}else{
-
 						//if can't match IdGuru and KatalaluanGuru in database...
 						echo"<script>alert('Id Guru atau Katalaluan Guru salah!!')</script>";
-
 					}
 				}
 			}
 			?>
-			
 		</div>
 		<?php
 			include("footer.php");
 		?>
-		
 	</body>
 </html>

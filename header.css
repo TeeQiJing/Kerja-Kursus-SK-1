@@ -1,128 +1,155 @@
 body {
-	margin: 0;
-	background-image: linear-gradient(to bottom left,  rgb(226, 0, 215),rgb(120, 50, 250),rgb(141, 0, 223));
-	padding: 0;
-	
-	transition: background-color .5s;
-	height: 1000vh;
+    margin: 0;
+    background-image: linear-gradient(to bottom left, rgb(226, 0, 215), rgb(120, 50, 250), rgb(141, 0, 223));
+    padding: 0;
+    transition: background-color .5s;
+    height: 1000vh;
 }
 
 #title {
-	background-color: rgb(255, 169, 205);
-	margin: 0;
-	color: White;
-	font-size: 20px;
-	font-family: Sans-Serif;	
-	height: 90px;
-	width: 100vw;
-	position: relative;
-	position: fixed;
-	z-index: 2;
-	top: 0;
-	text-align: center;
+    background-color: rgb(255, 169, 205);
+    margin: 0;
+    color: White;
+    font-size: 20px;
+    font-family: Consolas;
+    height: 90px;
+    width: 100vw;
+    position: relative;
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    text-align: center;
 }
 
-h1{
-	margin: 0;
-	line-height: 90px;
-	font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+h1 {
+    margin: 0;
+    line-height: 90px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 #menu-btn {
-	height: 50px;
-	width: 50px;
-	position: absolute;
-	top: 20px;
-	left: 15px;
-	opacity: 1;
-	z-index: 3;
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    top: 20px;
+    left: 15px;
+    opacity: 1;
+    z-index: 3;
 }
+
 #menu-btn:hover {
-	cursor: pointer;
+    cursor: pointer;
 }
 
 .sidenav {
-	height: 100%;
-	width: 0;
-	position: fixed;
-	z-index: 3;
-	top: 0;
-	left: 0;
-	background-color: #5a5757;
-	overflow-x: hidden;
-	overflow-y: scroll;
-	transition: 0.5s;
-	padding-top: 25px;
-	padding-bottom: 100px;
-	
-
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    background-color: #5a5757;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    transition: 0.5s;
+    padding-top: 25px;
+    padding-bottom: 100px;
 }
-.sidenav::-webkit-scrollbar, body::-webkit-scrollbar {
+
+.sidenav::-webkit-scrollbar,
+body::-webkit-scrollbar {
     display: none;
 }
+
 .sidenav #authorName {
-	margin-top: 25px;
-}
-.sidenav ul li a ,.sidenav a{
-	padding: 5px 8px 5px 32px;
-	text-decoration: none;
-	font-size: 25px;
-	color: #ffffff;
-	display: block;
-	transition: 0.5s;
-	font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-.sidenav ul li ul li a {
-	padding: 0px 8px 0px 35px;
-	margin: 0;
-	text-decoration: none;
-	cursor: pointer;
-	font-size: 20px;
-	color: #ffffff;
-	display: inline-block;
-	transition: 0.5s;
-	font-family: Verdana;
-}
-.sidenav > ul {
-	margin-top: 0;
-}
-.sidenav a:hover {
-	color: #9b9494;
-}
-  
-.sidenav .closebtn {
-	position: absolute;
-	top: -3px;
-	right: 15px;
-	font-size: 36px;
-	margin-left: 50px;
-}
-  
-#content{
-	transition: margin-left .5s;
+    margin-top: 25px;
 }
 
+.sidenav ul li a,
+.sidenav a {
+    padding: 5px 8px 5px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #ffffff;
+    display: block;
+    transition: 0.5s;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.sidenav ul li ul li a {
+    padding: 0px 8px 0px 35px;
+    margin: 0;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 20px;
+    color: #ffffff;
+    display: inline-block;
+    transition: 0.5s;
+    font-family: Verdana;
+}
+
+.sidenav>ul {
+    margin-top: 0;
+}
+
+.sidenav a:hover {
+    color: #9b9494;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: -3px;
+    right: 15px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+#content {
+    transition: margin-left .5s;
+}
 
 ul li ul li {
-	display: none;
-	color: white;
+    display: none;
+    color: white;
 }
 
 ul li:hover ul li {
-	display: block;
+    display: block;
 }
 
 ul {
-	list-style: none;
-	padding: 0%;
+    list-style: none;
+    padding: 0%;
 }
-ul li ul img{
-	
-	
-	position: relative;
-	left: 35px;
-	top: 5px;
-	
+
+ul li ul img {
+    position: relative;
+    left: 35px;
+    top: 5px;
+}
+
+#changebtn {
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    text-transform: uppercase;
+    color: black;
+    font-size: 16px;
+    border: 2px dotted black;
+    outline: none;
+    padding: 15px 20px;
+    background: none;
+    border-radius: 25px;
+    transition: .3s;
+    font-weight: bold;
+}
+
+#changebtn:hover {
+    color: white;
+    background: #6200ff;
+    box-shadow: 0 0 10px #6200ff, 0 0 40px #6200ff, 0 0 80px #6200ff;
+    cursor: pointer;
+    border: none;
 }
 
 

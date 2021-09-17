@@ -241,7 +241,7 @@ error_reporting(E_ALL & ~E_NOTICE);
 				</li>
 			</ul>
 		</div>
-</div>
+
 <?php
 		// If status is murid(murid already login)
 	} else if ($_SESSION["Status"] == "Murid") { ?>
@@ -282,3 +282,4 @@ error_reporting(E_ALL & ~E_NOTICE);
 <?php
 	}
 ?>
+</div>

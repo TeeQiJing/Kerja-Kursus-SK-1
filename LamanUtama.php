@@ -58,7 +58,9 @@
 				</div>
 				
 			</div>
-
+			<div id="function">
+				<button id="changebtn" onclick="changeTheme()" ondblclick="defaultTheme()">Change Color</button>
+			</div>
 		</div>
 		<?php
 			// footer.php is a file to add side menu sliding function
@@ -97,7 +99,10 @@
 				// Auto change slide every 3 seconds (infinitely)
   				setTimeout(showSlides, 3000);
 			}
+			
+			
 		</script>
+		<script src="changeTheme.js"></script>
 
 	</body>
 </html>

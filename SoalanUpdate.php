@@ -67,7 +67,12 @@
 						</div>
 
 						<div class='txt_field'>
-							<input type='text' id='Jawapan' name='Jawapan' required>
+							<select name='Jawapan' id='Jawapan' required>
+                                <option value="A">A</option>
+								<option value="B">B</option>
+								<option value="C">C</option>
+								<option value="D">D</option>
+						    </select>
 							<span></span>
 							<label>Jawapan</label>
 						</div>
@@ -79,7 +84,7 @@
 								    $result = mysqli_query($conn, "SELECT * FROM guru");
 
 								    while($guru = mysqli_fetch_assoc($result)){
-									    echo"<option value='$guru[IdGuru]'>$guru[IdGuru]</option>";
+									    echo"<option value='$guru[IdGuru]'>$guru[IdGuru] - $guru[NamaGuru]</option>";
 								    }
                                 ?>
 						    </select>
@@ -94,7 +99,7 @@
                                     $result = mysqli_query($conn, "SELECT * FROM topik");
 
                                     while($topik = mysqli_fetch_assoc($result)){
-                                        echo"<option value='$topik[IdTopik]'>$topik[IdTopik].$topik[NamaTopik]</option>";
+                                        echo"<option value='$topik[IdTopik]'>$topik[IdTopik] - $topik[NamaTopik]</option>";
                                     }
                                 ?>
 							</select>
@@ -124,34 +129,18 @@
                 $IdGuru = $_POST['IdGuru'];	
                 $IdTopik = $_POST['IdTopik'];
 
-				if(strlen($Jawapan) != 1){
-					echo "
-					<script>
-						alert('Jawapan mesti 1 aksara sahaja!!!');
-						window.location = 'SoalanUpdate.php';
-					</script>";
-				}else if($Jawapan == "A" || $Jawapan == "B" || $Jawapan == "C" || $Jawapan == "D"){
-
-					//Update new data 
-					$sql = "UPDATE soalan 
-					SET NamaSoalan='$NamaSoalan', PilihanA='$PilihanA', PilihanB='$PilihanB', PilihanC='$PilihanC', PilihanD='$PilihanD', Jawapan='$Jawapan', IdGuru='$IdGuru', IdTopik='$IdTopik' 
-					WHERE IdSoalan='$IdSoalan'";
-					
-					//if data are updated successfully...
-					if(mysqli_query($conn, $sql)){
-						echo "<script>alert('Berjaya kemaskini soalan');</script>";
-					}else {
-						echo "<script>alert('Tidak berjaya kemaskini soalan');</script>";
-					}
-					echo "<script>window.location='SoalanUpdate.php';</script>";
-				}else {
-					echo "
-					<script>
-						alert('Jawapan mesti huruf besar A, B, C atau D sahaja!!!');
-						window.location = 'SoalanUpdate.php';
-					</script>";
-				}
+				//Update new data 
+				$sql = "UPDATE soalan 
+				SET NamaSoalan='$NamaSoalan', PilihanA='$PilihanA', PilihanB='$PilihanB', PilihanC='$PilihanC', PilihanD='$PilihanD', Jawapan='$Jawapan', IdGuru='$IdGuru', IdTopik='$IdTopik' 
+				WHERE IdSoalan='$IdSoalan'";
 				
+				//if data are updated successfully...
+				if(mysqli_query($conn, $sql)){
+					echo "<script>alert('Berjaya kemaskini soalan');</script>";
+				}else {
+					echo "<script>alert('Tidak berjaya kemaskini soalan');</script>";
+				}
+				echo "<script>window.location='SoalanUpdate.php';</script>";
 			}
 		?>
 		

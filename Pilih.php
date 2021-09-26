@@ -9,9 +9,19 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Pilih Topik</title>
+		<title>Tambah Soalan</title>
 		<link href="header.css" rel="stylesheet">
 		<link href="Pilih.css" rel="stylesheet">
+		<style>
+			.txt_field input#IdSoalan:not(:placeholder-shown)~label {
+				top: -5px;
+				color: #2691d9;
+			}
+
+			.txt_field input#IdSoalan:not(:placeholder-shown)~span::before {
+				width: 100%;
+			}
+		</style>
 	</head>
 	<body>
 		<?php
@@ -36,7 +46,7 @@
 				
 					<form action='Pilih.php' method='POST' autocomplete='off'>
 						<div class='txt_field'>
-							<input type='text' id='IdSoalan' name='IdSoalan' required>
+							<input type='text' id='IdSoalan' name='IdSoalan' placeholder=' ' pattern='S[0-9]{3}' title='S followed by 3 int(E.g. S001)' required>
 							<span></span>
 							<label>Id Soalan</label>
 						</div>
@@ -71,7 +81,12 @@
 						</div>
 
 						<div class='txt_field'>
-							<input type='text' id='Jawapan' name='Jawapan' required>
+							<select name='Jawapan' id='Jawapan' required>
+								<option value='A'>A</option>
+								<option value='B'>B</option>
+								<option value='C'>C</option>
+								<option value='D'>D</option>
+							</select>
 							<span></span>
 							<label>Jawapan</label>
 						</div>
@@ -90,7 +105,7 @@
 
 								while($topik = mysqli_fetch_assoc($result)){
 
-									echo"<option value='$topik[IdTopik]'>$topik[IdTopik].$topik[NamaTopik]</option>";
+									echo"<option value='$topik[IdTopik]'>$topik[IdTopik] - $topik[NamaTopik]</option>";
 								}
 				echo'
 							</select>
@@ -115,46 +130,31 @@
 					$IdGuru = $_SESSION['IdGuru'];	
 					$IdTopik = $_POST['IdTopik'];
 					
-					if(strlen($IdSoalan) != 4 || $IdSoalan[0] != 'S'){
-						echo "
-						<script>
-							alert('Id Soalan mesti mula dari huruf S dan mesti 4 aksara dan mematuhi format Sxxx!!!');
-							window.location = 'Pilih.php';
-						</script>";
-					}else if(strlen($Jawapan) != 1 || $Jawapan != 'A' || $Jawapan != 'B' || $Jawapan != 'C' || $Jawapan != 'D'){
-						echo "
-						<script>
-							alert('Jawapan mesti huruf besar A, B, C atau D sahaja!!!');
-							window.location = 'Pilih.php';
-						</script>";
-					}else{	
-						//Check whether the IdSoalan is exist in database
-						$checksql = "SELECT * FROM soalan WHERE IdSoalan = '$IdSoalan'";
-						$checkResult = mysqli_query($conn, $checksql);
-						
-						//if the IdSoalan is exist in database...
-						if(mysqli_num_rows($checkResult)==1){
-
-							//alert message
-							echo("<script>alert('Id Soalan telah import, sila import Id Soalan lain!!!')</script>");
-
-						}else{
-
-							//if the IdSoalan is not exist in database, then can import soalan
-							$sql2 = "INSERT INTO soalan(IdSoalan, NamaSoalan, PilihanA, PilihanB, PilihanC, PilihanD, Jawapan, IdGuru, IdTopik) 
-							VALUES('$IdSoalan', '$NamaSoalan', '$PilihanA', '$PilihanB', '$PilihanC', '$PilihanD', '$Jawapan', '$IdGuru', '$IdTopik')";
-							$result2 = mysqli_query($conn, $sql2);
-
-							if($result2){
-								echo"New record is inserted sucessfully";
-								echo "<script>alert('Berjaya tambah soalan baharu');</script>";
-							}else {
-								echo "<script>alert('Tidak berjaya tambah soalan baharu');</script>";
-							}
-							echo "<script>window.location='Pilih.php';</script>";
-						}
-					}
+					//Check whether the IdSoalan is exist in database
+					$checksql = "SELECT * FROM soalan WHERE IdSoalan = '$IdSoalan'";
+					$checkResult = mysqli_query($conn, $checksql);
 					
+					//if the IdSoalan is exist in database...
+					if(mysqli_num_rows($checkResult)==1){
+
+						//alert message
+						echo("<script>alert('Id Soalan telah import, sila import Id Soalan lain!!!')</script>");
+
+					}else{
+
+						//if the IdSoalan is not exist in database, then can import soalan
+						$sql2 = "INSERT INTO soalan(IdSoalan, NamaSoalan, PilihanA, PilihanB, PilihanC, PilihanD, Jawapan, IdGuru, IdTopik) 
+						VALUES('$IdSoalan', '$NamaSoalan', '$PilihanA', '$PilihanB', '$PilihanC', '$PilihanD', '$Jawapan', '$IdGuru', '$IdTopik')";
+						$result2 = mysqli_query($conn, $sql2);
+
+						if($result2){
+							echo"New record is inserted sucessfully";
+							echo "<script>alert('Berjaya tambah soalan baharu');</script>";
+						}else {
+							echo "<script>alert('Tidak berjaya tambah soalan baharu');</script>";
+						}
+						echo "<script>window.location='Pilih.php';</script>";
+					}
 				}
 				echo"</div>";
 			}

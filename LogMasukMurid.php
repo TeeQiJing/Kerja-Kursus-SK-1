@@ -24,11 +24,11 @@
 						<label>Id Murid</label>
 					</div>
 					<div class="txt_field">
-						<input type="password" id="KatalaluanMurid" name="KatalaluanMurid" required>
+						<input type="password" id="KatalaluanMurid" placeholder=" " name="KatalaluanMurid" required>
 						<span></span>
 						<label>Katalaluan Murid</label>
 					</div>
-					<input type="submit" value="Log Masuk" name="LogMasukMurid" id="LogMasukMurid">
+					<input type="submit" value="Log Masuk" placeholder=" " name="LogMasukMurid" id="LogMasukMurid">
 					<div class="signup_link">
 						Belum Daftar?  <a href="DaftarMurid.php">Daftar Sini</a>
 					</div>
@@ -53,6 +53,16 @@
 					$_SESSION["NamaMurid"] = $row["NamaMurid"];	
 					$_SESSION["IdMurid"] = $row["IdMurid"];
 					$_SESSION["Status"] = "Murid";
+
+					// Record in LogMasukMurid.txt
+					date_default_timezone_set("Asia/Kuala_Lumpur");
+					$date = date('d/m/y h:i:s a', time());
+					$file = fopen("LogMasukMurid.txt", "a");
+					$NamaMurid = $row["NamaMurid"];	
+					$txt = $IdMurid." - ".$NamaMurid." : ".$date.PHP_EOL;
+					fwrite($file, $txt);
+					fclose($file);
+
 					//transfer user to laman utama
 					header("location: LamanUtama.php");
 				}else{

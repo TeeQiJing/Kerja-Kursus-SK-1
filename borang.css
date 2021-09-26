@@ -125,6 +125,7 @@ select {
     font-size: 16px;
     margin-left: 40%;
     margin-bottom: 10px;
+    text-align: center;
 }
 
 select:focus,
@@ -153,6 +154,11 @@ option {
     text-decoration: underline;
 }
 
-input::placeholder {
-    color: #adadadb6;
+.txt_field input:not(:placeholder-shown)~label {
+    top: -5px;
+    color: #2691d9;
+}
+
+.txt_field input:not(:placeholder-shown)~span::before {
+    width: 100%;
 }

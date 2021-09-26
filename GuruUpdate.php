@@ -42,19 +42,17 @@
 						<label id="SilaPilihKelas">Sila Pilih IdGuru</label>
 					</div>
                     <div class="txt_field">
-						<input type="text" name="NamaGuru" required>
+						<input type="text" name="NamaGuru" placeholder=" " required>
 						<span></span>
 						<label>Nama Guru</label>
 					</div>
 					<div class="txt_field">
-						<input type="text" id="KatalaluanGuru" name="KatalaluanGuru" required>
+						<input type="text" id="KatalaluanGuru" placeholder=" " pattern="[A-Za-z0-9]{8}" title="8 Characters" name="KatalaluanGuru" required>
 						<span></span>
 						<label>KatalaluanGuru</label>
 					</div>
 
 					<input type="submit" value="Kemaskini" name="UpdateGuru" id="UpdateGuru">
-
-					
 				</form>
 			</div>
 
@@ -70,24 +68,17 @@
 				$NamaGuru = $_POST['NamaGuru'];
                 $KatalaluanGuru = $_POST['KatalaluanGuru'];
 
-				if(strlen($KatalaluanGuru) != 8){
-					echo "
-					<script>
-						alert('Katalaluan Guru mesti 8 aksara!!!');
-						window.location = 'GuruUpdate.php';
-					</script>";
-				}else{
-					//Update new data 
-					$sql = "UPDATE guru SET NamaGuru='$NamaGuru', KatalaluanGuru='$KatalaluanGuru' WHERE IdGuru='$IdGuru'";
-					
-					//if data are updated successfully...
-					if(mysqli_query($conn, $sql)){
-						echo "<script>alert('Berjaya kemaskini guru');</script>";
-					}else {
-						echo "<script>alert('Tidak berjaya kemaskini guru');</script>";
-					}
-					echo "<script>window.location='GuruUpdate.php';</script>";
+				//Update new data 
+				$sql = "UPDATE guru SET NamaGuru='$NamaGuru', KatalaluanGuru='$KatalaluanGuru' WHERE IdGuru='$IdGuru'";
+				
+				//if data are updated successfully...
+				if(mysqli_query($conn, $sql)){
+					echo "<script>alert('Berjaya kemaskini guru');</script>";
+				}else {
+					echo "<script>alert('Tidak berjaya kemaskini guru');</script>";
 				}
+				echo "<script>window.location='GuruUpdate.php';</script>";
+				
 			}
 		?>
 		

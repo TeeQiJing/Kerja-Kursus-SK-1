@@ -2,6 +2,7 @@
 	// Start session
 	session_start();
 	error_reporting(E_ALL & ~E_NOTICE);
+	date_default_timezone_set("Asia/Kuala_Lumpur");
 ?>
 <!DOCTYPE html>
 <html>
@@ -16,15 +17,15 @@
 		?>
 		<div id="content">
 			<div class="center" id="center">
-				<h1>LOG MASUK GURU</h1>
+				<h1>Log Masuk Guru</h1>
 				<form action="LogMasukGuru.php" method="POST" autocomplete="off">
 					<div class="txt_field">
-						<input type="text" id="IdGuru" name="IdGuru" required>
+						<input type="text" id="IdGuru" name="IdGuru" placeholder=" " required>
 						<span></span>
 						<label>Id Guru</label>
 					</div>
 					<div class="txt_field">
-						<input type="password" id="KatalaluanGuru" name="KatalaluanGuru" required>
+						<input type="password" id="KatalaluanGuru" placeholder=" " name="KatalaluanGuru" required>
 						<span></span>
 						<label>Katalaluan Guru</label>
 					</div>
@@ -55,6 +56,15 @@
 						$_SESSION["NamaGuru"] = $row["NamaGuru"];	
 						$_SESSION["IdGuru"] = $row["IdGuru"];	
 						$_SESSION["Status"] = "Guru";
+						
+						// Record in LogMasukGuru.txt
+						$date = date('d/m/y h:i:s a', time());
+						$file = fopen("LogMasukGuru.txt", "a");
+						$NamaGuru = $row["NamaGuru"];	
+						$txt = $IdGuru." - ".$NamaGuru." : ".$date.PHP_EOL;
+						fwrite($file, $txt);
+						fclose($file);
+
 						//transfer user to laman utama
 						header("location: LamanUtama.php");
 					}else{

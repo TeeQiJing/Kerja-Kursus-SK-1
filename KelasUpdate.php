@@ -43,7 +43,7 @@
 					</div>
 
 					<div class="txt_field">
-						<input type="text" id="NamaKelas" name="NamaKelas" required>
+						<input type="text" id="NamaKelas" placeholder=" " name="NamaKelas" required>
 						<span></span>
 						<label>Nama Kelas</label>
 					</div>

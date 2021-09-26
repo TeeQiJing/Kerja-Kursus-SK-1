@@ -37,13 +37,13 @@
 				
 				<form action="TopikInsert.php" method="POST" autocomplete="off">
 					<div class="txt_field">
-						<input type="text" id="IdTopik" name="IdTopik" required>
+						<input type="text" id="IdTopik" name="IdTopik" placeholder=" " pattern="[0-9]{1}.[0-9]{2}" title="Int (E.g. 3.5)" required>
 						<span></span>
 						<label>Id Topik</label>
 					</div>
 
 					<div class="txt_field">
-						<input type="text" id="NamaTopik" name="NamaTopik" required>
+						<input type="text" id="NamaTopik" name="NamaTopik" placeholder=" " required>
 						<span></span>
 						<label>Nama Topik</label>
 					</div>
@@ -65,34 +65,28 @@
 				$IdTopik = $_POST['IdTopik'];
 				$NamaTopik = $_POST['NamaTopik'];
 
-				if(strlen($IdTopik) != 3 || !is_numeric($IdTopik[0]) || !is_numeric($IdTopik[2])){
-					echo "
-					<script>
-						alert('Id Topik mesti 3 aksara dan mematuhi format x.x (E.g. 3.2)!!!');
-						window.location = 'TopikInsert.php';
-					</script>";
-				}else{		
-					$checksql = "SELECT * FROM topik WHERE IdTopik='$IdTopik'";			
-					$result = mysqli_query($conn, $checksql);
+					
+				$checksql = "SELECT * FROM topik WHERE IdTopik='$IdTopik'";			
+				$result = mysqli_query($conn, $checksql);
 
-					//if can find IdTopik in database... (Means that this IdTopik is exist and cannot insert as new)
-					if(mysqli_num_rows($result)==1){
-						echo("<script>alert('Id Topik sudah ada, sila tambah Id Topik lain!!!')</script>");
-					}else{
-						//if IdTopik is not found(Database does not has that IdTopik, user can insert as new)
-						//Tambah(Insert data into database)
-						$sql = "INSERT INTO topik(IdTopik, NamaTopik) VALUES('$IdTopik', '$NamaTopik')";
-						
-						//if data are inserted successfully...
-						if(mysqli_query($conn, $sql)){
-							echo"New record is inserted sucessfully";
-							echo "<script>alert('Berjaya tambah topik baharu');</script>";
-						}else {
-							echo "<script>alert('Tidak berjaya tambah topik baharu');</script>";
-						}
-						echo "<script>window.location='TopikInsert.php';</script>";
+				//if can find IdTopik in database... (Means that this IdTopik is exist and cannot insert as new)
+				if(mysqli_num_rows($result)==1){
+					echo("<script>alert('Id Topik sudah ada, sila tambah Id Topik lain!!!')</script>");
+				}else{
+					//if IdTopik is not found(Database does not has that IdTopik, user can insert as new)
+					//Tambah(Insert data into database)
+					$sql = "INSERT INTO topik(IdTopik, NamaTopik) VALUES('$IdTopik', '$NamaTopik')";
+					
+					//if data are inserted successfully...
+					if(mysqli_query($conn, $sql)){
+						echo"New record is inserted sucessfully";
+						echo "<script>alert('Berjaya tambah topik baharu');</script>";
+					}else {
+						echo "<script>alert('Tidak berjaya tambah topik baharu');</script>";
 					}
+					echo "<script>window.location='TopikInsert.php';</script>";
 				}
+				
 			}
 		?>
 		

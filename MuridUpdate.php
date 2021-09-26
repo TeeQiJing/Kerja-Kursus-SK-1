@@ -42,7 +42,7 @@
 						<label id="SilaPilihKelas">Sila Pilih Murid</label>
 					</div>
                     <div class="txt_field">
-						<input type="text" name="NamaMurid" required>
+						<input type="text" name="NamaMurid" placeholder=" " required>
 						<span></span>
 						<label>Nama Murid</label>
 					</div>
@@ -63,9 +63,9 @@
 					</div>
 
 					<div class="txt_field">
-						<input type="text" id="KatalaluanMurid" name="KatalaluanMurid" required>
+						<input type="text" id="KatalaluanMurid" placeholder=" " name="KatalaluanMurid" pattern="[A-Za-z0-9]{8}" title="8 Characters"required>
 						<span></span>
-						<label>KatalaluanMurid</label>
+						<label>Katalaluan Murid</label>
 					</div>
 
 					<input type="submit" value="Kemaskini" name="UpdateMurid" id="UpdateMurid">

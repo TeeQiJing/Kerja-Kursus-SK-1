@@ -37,13 +37,13 @@
 				
 				<form action="KelasInsert.php" method="POST" autocomplete="off">
 					<div class="txt_field">
-						<input type="text" id="IdKelas" name="IdKelas" required>
+						<input type="text" id="IdKelas" name="IdKelas" placeholder=" " pattern="[0-9]{1}[A-Z]{1}" title="1 Int followed by 1 Capital letter"required>
 						<span></span>
 						<label>Id Kelas</label>
 					</div>
 
 					<div class="txt_field">
-						<input type="text" id="NamaKelas" name="NamaKelas" required>
+						<input type="text" id="NamaKelas" name="NamaKelas" placeholder=" "required>
 						<span></span>
 						<label>Nama Kelas</label>
 					</div>

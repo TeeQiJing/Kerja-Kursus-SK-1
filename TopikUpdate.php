@@ -42,7 +42,7 @@
 						<label id="SilaPilihKelas">Sila Pilih Topik</label>
 					</div>
                     <div class="txt_field">
-						<input type="text" name="NamaTopik" required>
+						<input type="text" name="NamaTopik" placeholder=" " required>
 						<span></span>
 						<label>Nama Topik</label>
 					</div>

@@ -42,9 +42,10 @@
                     		<th>Kebenaran</th>
 							<th>Tarikh</th>
                 		</tr>";
+						$bil = 1;
                 		while($row2 = mysqli_fetch_array($result2)){
                     		echo "<tr>";
-							echo "<td>" . $row2['IdKeputusan'] . "</td>";
+							echo "<td>" . $bil . "</td>";
                     		echo "<td>" . $IdMuridNow . "</td>";
                    	 		echo "<td>" . $NamaMuridNow . "</td>";
                     		echo "<td>" . $row2['IdSoalan'] . "</td>";
@@ -52,6 +53,7 @@
 							echo "<td>" . $row2['Kebenaran'] . "</td>";
 							echo "<td>" . $row2['Tarikh'] . "</td>";
                     		echo "</tr>";
+							$bil++;
                 		}
 						echo "<tr>";
 					// Calculate total number of questions which are answered correctly by the specific student

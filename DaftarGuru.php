@@ -2,6 +2,7 @@
 	// Start session
 	session_start();
 	error_reporting(E_ALL & ~E_NOTICE);
+	date_default_timezone_set("Asia/Kuala_Lumpur");
 ?>
 <!DOCTYPE html>
 <html>
@@ -19,18 +20,17 @@
 				<h1>Daftar Guru</h1>
 				<form action="DaftarGuru.php" method="POST" autocomplete="off">
 					<div class="txt_field">
-						<input type="text" id="IdGuru" name="IdGuru" onfocusin="focusIdGuru()" onfocusout="clearIdGuru()" required>
+						<input type="text" id="IdGuru" name="IdGuru" placeholder=" " pattern="G[0-9]{3}" title="G followed by 3 int (E.g. G900)" required>
 						<span></span>
 						<label>Id Guru</label>
 					</div>
 					<div class="txt_field">
-						<input type="text" id="NamaGuru" name="NamaGuru" required>
+						<input type="text" id="NamaGuru" name="NamaGuru" placeholder=" " required>
 						<span></span>
 						<label>Nama Guru</label>
 					</div>
 					<div class="txt_field">
-						<input type="password" id="KatalaluanGuru" name="KatalaluanGuru" onfocusin="focusPassGuru()" 
-						onfocusout="clearPassGuru()" required>
+						<input type="password" id="KatalaluanGuru" placeholder=" " name="KatalaluanGuru" pattern="[A-Za-z0-9]{8}" title="8 Characters" required>
 						<span></span>
 						<label>Katalaluan Guru</label>
 					</div>
@@ -50,42 +50,37 @@
 				$IdGuru = $_POST['IdGuru'];
 				$NamaGuru = $_POST['NamaGuru'];
 				$KatalaluanGuru = $_POST['KatalaluanGuru'];
-				if(strlen($IdGuru) != 4 || $IdGuru[0] != 'G'){
-					echo "
-					<script>
-						alert('Id Guru mesti mula dari huruf G dan mesti 4 aksara dan mematuhi format Gxxx!!!');
-						window.location = 'DaftarGuru.php';
-					</script>";
-				}else if(strlen($KatalaluanGuru) != 8){
-					echo "
-					<script>
-						alert('Katalaluan Guru mesti 8 aksara!!!');
-						window.location = 'DaftarGuru.php';
-					</script>";
+				
+				$checksql = "SELECT * FROM guru WHERE IdGuru='$IdGuru'";	
+				$result = mysqli_query($conn, $checksql);
+				//if can find IdGuru in database... (Means that this IdGuru is exist and user need to login)
+				if(mysqli_num_rows($result)==1){
+					echo("<script>alert('Id Guru anda telah daftar, sila log masuk!!!')</script>");
 				}else{
-					$checksql = "SELECT * FROM guru WHERE IdGuru='$IdGuru'";	
-					$result = mysqli_query($conn, $checksql);
-					//if can find IdGuru in database... (Means that this IdGuru is exist and user need to login)
-					if(mysqli_num_rows($result)==1){
-						echo("<script>alert('Id Guru anda telah daftar, sila log masuk!!!')</script>");
-					}else{
-						//if IdGuru is not found(Database does not has that IdGuru, user can daftar)
-						//Daftar(Insert data into database)
-						$sql = "INSERT INTO guru(IdGuru, NamaGuru, KatalaluanGuru) VALUES('$IdGuru', '$NamaGuru', '$KatalaluanGuru')";					
-						//if data are inserted successfully...
-						if(mysqli_query($conn, $sql)){
-							echo"New record is inserted sucessfully";
-							//store $NamaGuru and $IdGuru in $_SESSION[] for other uses purposes
-							$_SESSION["NamaGuru"] = $NamaGuru;
-							$_SESSION["IdGuru"] = $IdGuru;
-							$_SESSION["Status"] = "Guru";
-							//transfer user to laman utama
-							echo "
-							<script>
-								alert('Berjaya daftar!');
-								window.location.href='LamanUtama.php';
-							</script>";
-						}
+					//if IdGuru is not found(Database does not has that IdGuru, user can daftar)
+					//Daftar(Insert data into database)
+					$sql = "INSERT INTO guru(IdGuru, NamaGuru, KatalaluanGuru) VALUES('$IdGuru', '$NamaGuru', '$KatalaluanGuru')";					
+					//if data are inserted successfully...
+					if(mysqli_query($conn, $sql)){
+						echo"New record is inserted sucessfully";
+						//store $NamaGuru and $IdGuru in $_SESSION[] for other uses purposes
+						$_SESSION["NamaGuru"] = $NamaGuru;
+						$_SESSION["IdGuru"] = $IdGuru;
+						$_SESSION["Status"] = "Guru";
+						
+						// Record in DaftarGuru.txt
+						$date = date('d/m/y h:i:s a', time());
+						$file = fopen("DaftarGuru.txt", "a");
+						$txt = $IdGuru." - ".$NamaGuru." : ".$date.PHP_EOL;
+						fwrite($file, $txt);
+						fclose($file);
+
+						//transfer user to laman utama
+						echo "
+						<script>
+							alert('Berjaya daftar!');
+							window.location.href='LamanUtama.php';
+						</script>";
 					}
 				}			
 			}
@@ -94,19 +89,5 @@
 		<?php
 			include("footer.php");
 		?>
-		<script>
-			function focusIdGuru(){
-				document.getElementById("IdGuru").placeholder = "G001 4 char"
-			}
-			function focusPassGuru(){
-				document.getElementById("KatalaluanGuru").placeholder = "12345678 8 char"
-			}
-			function clearIdGuru(){
-				document.getElementById("IdGuru").placeholder = ""
-			}
-			function clearPassGuru(){
-				document.getElementById("KatalaluanGuru").placeholder = ""
-			}
-		</script>
 	</body>
 </html>
